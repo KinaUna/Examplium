@@ -1,8 +1,12 @@
 # Documentation Overview
 
-Nothing to see here yet.
+Todo: Table of contents go here.
 
-Topics to explore and possibly document here, in no particular order:
+Todo: Something about what is software documentation.
+Todo: Something about what is organizational/business/project documentation.
+
+
+Brainstorm of topics to explore and possibly document here, in no particular order:
 - Code and software development
 - Startup
 - Business documentation
@@ -22,8 +26,13 @@ Topics to explore and possibly document here, in no particular order:
 - Legal
 - Privacy
 - Security
+- Usability
 - Learning
 - Integration
 - Testing
-- Vision, mission, objectives
+- Vision, mission, objectives, OKR
 - Roles, jobs
+- Ideas, creativity, problem solving
+- Habits, mindsets, attitudes
+- Data, information, knowledge, insight, wisdom
+- Methodologies (Agile, Scrum, waterfall, etc.)
