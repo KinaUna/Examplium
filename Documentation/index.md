@@ -1,8 +1,13 @@
 # Documentation Overview
 
+Got something to say about docmentation?
+
+Then you can add your own comments, ideas, complaints to the discussion here: [Examplium Discussions](https://github.com/KinaUna/Examplium/discussions)
+
 Todo: Table of contents go here.
 
 Todo: Something about what is software documentation.
+
 Todo: Something about what is organizational/business/project documentation.
 
 
