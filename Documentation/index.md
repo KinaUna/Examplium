@@ -24,7 +24,8 @@ Here is more information from GitHub's documentation: [Communicating on GitHub](
 
 ## Table of contents
 
-**Todo**: Table of contents go here.
+### Logs
+- [Activity Log](Documentation/Logs/ActivityLog.md)
 
 <br />
 
