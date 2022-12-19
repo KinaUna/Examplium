@@ -71,3 +71,11 @@ Add index.md file for a starting page.
 
 Add activity log file (this file) to document how the project develops over time.
 
+<br/>
+
+#### Begin adding issues
+
+Keep track of things, tasks, jobs to be done in the Issues section.
+
+Organize the issues in the Projects section.
+
