@@ -79,9 +79,21 @@ Keep track of things, tasks, jobs to be done in the Issues section.
 
 Organize the issues in the Projects section.
 
+<br/>
+
 #### Set up email services.
 
 Update DNS records from the website of the domain name service provider.
 
 Added admin and support at examplium.com email addresses.
+
+<br/>
+
+### Use milestone in GitHub
+
+Start using milestones to help organize and prioritize issues within GitHub.
+
+Added first milestone: Startup - initiation.
+
+<br/>
 
