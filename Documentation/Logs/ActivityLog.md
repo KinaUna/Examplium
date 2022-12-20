@@ -83,4 +83,5 @@ Organize the issues in the Projects section.
 
 Update DNS records from the website of the domain name service provider.
 
+Added admin and support at examplium.com email addresses.
 
