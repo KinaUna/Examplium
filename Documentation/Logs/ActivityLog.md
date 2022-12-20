@@ -79,3 +79,8 @@ Keep track of things, tasks, jobs to be done in the Issues section.
 
 Organize the issues in the Projects section.
 
+#### Set up email services.
+
+Update DNS records from the website of the domain name service provider.
+
+
