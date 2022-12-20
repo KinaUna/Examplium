@@ -112,7 +112,9 @@ For now, this solution will focus on providing a solution for self-learners, so 
 
 <br />
 
-**Context:** The examples are isolated. I don't learn much about the interaction with different work areas.
+**Context:** The examples are isolated. I don't learn much about the interaction with different work areas. Integration with other disciplines is often completely missing when learning, so you risk getting tunnel-vision, or get trapped in your own little filter bubble, which can impede valuable input and insights from outside your field. 
+
+Increased exposure to the outside world will probably also make collaboration more effective, as being familiar with other people's concepts, values, constraints, and responsibilites improves communication. Knowing that words have different meaning, connotations, implications for people in different roles can prevent many misunderstandings and improve expectation management too. 
 
 <br />
 
