@@ -10,6 +10,18 @@ This is a fairly long and convoluted explanation as I don’t know how to presen
 
 <br />
 
+## Project naming
+
+Examplium is a combination of example and the suffix -ium. 
+
+From Wiktionary: Used to indicate the setting where a given activity is carried out: for example, auditorium, colloquium, gymnasium, natatorium, planetarium, podium, sanatorium, stadium. Words so formed often take -a for the plural.
+
+The outer project, building a sample model for learning about work will be called **Examplium Peridium**. [Peridium](https://www.dictionary.com/browse/peridium) is the outer layer of the sporebearing organ in many fungi, which seems fitting as I hope the ideas here will spawn similar ideas (spores) and those ideas grow into projects of their own (fungi, with another peridium). Fungi reproduction is also [complex](https://en.wikipedia.org/wiki/Fungus#Reproduction). Also, it begins with my name.
+
+The inner project, the development of a product, will be called **Examplium Scion**. [Scion](https://www.dictionary.com/browse/scion): offshoot, progeny, child.
+
+<br/>
+
 ## What the what?
 
 Examplium is a project intended to provide an example for learning about working with (software) product development, using a realistic product as the starting point. One might imagine it like WordPress, Umbraco, or even Linux for work life.
@@ -17,12 +29,12 @@ Examplium is a project intended to provide an example for learning about working
 The example product may not be profitable, or even viable, but it will be a functioning product none the less, and it should serve as a sample to use as a starting point for learning by doing, experimentation, and exploration, to help you get a better grasp of what work life entails.
 
 The initial product concept is based on my first startup idea, KinaUna. An app I created to collect information for and about my daughter, to keep a record for her and to share some things with the extended family.
-
+ 
 The first milestone is to build a minimal virtual company, like a one-person startup, and then steadily add features of bigger and bigger organizations as complexity increases. Seeing is believing, having something tangible to work with early on will make it a lot easier to explain what it is, and what it could become.
 
 I will begin with building it my way, but others should be able to extend it, or copy the concept and rebuild it in a way that fits them better. For example, my preferred platform for app development is currently .Net, and I want to learn more about Blazor, so I will use that. But anyone with the appropriate skills can clone the project and then replace the code part of the project with Python, PHP, Node.js, or whatever framework suits them best. Similarly, if you prefer a different approach to documentation, collaboration, planning, and so on, you should be able to replace that too.
 
-<br />
+<br/>
 
 ## Wherefore
 
