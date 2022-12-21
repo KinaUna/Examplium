@@ -10,10 +10,10 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 ## Table of Contents
 
 ### Logs
-- [Activity Log](Documentation/Logs/ActivityLog.md)
+- [Activity Log](Logs/ActivityLog.md)
 
 ### Code
-- [Getting Started](Documentation/Code/Getting-Started.md)
+- [Getting Started](Code/Getting-Started.md)
 
 <br />
 
