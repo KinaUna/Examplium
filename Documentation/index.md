@@ -1,9 +1,19 @@
 # Documentation Overview
 
 
-#### Got something to say about the docmentation?
+#### Got something to say about the documentation?
 
 Then you can add your own comments, ideas, complaints to the discussion here: [Examplium Discussions](https://github.com/KinaUna/Examplium/discussions)
+
+<br />
+
+## Table of Contents
+
+### Logs
+- [Activity Log](Documentation/Logs/ActivityLog.md)
+
+### Code
+- [Getting Started](Documentation/Code/Getting-Started.md)
 
 <br />
 
@@ -21,16 +31,6 @@ If you cannot find something you may want to have a look at these other tools/se
 Here is more information from GitHub's documentation: [Communicating on GitHub](https://docs.github.com/en/get-started/quickstart/communicating-on-github)
 
 <br/>
-
-## Table of contents
-
-### Logs
-- [Activity Log](Documentation/Logs/ActivityLog.md)
-
-### Code
-- [Getting Started](Documentation/Code/Getting-Started.md)
-
-<br />
 
 ## What is software documentation?
 
