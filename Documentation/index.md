@@ -27,6 +27,9 @@ Here is more information from GitHub's documentation: [Communicating on GitHub](
 ### Logs
 - [Activity Log](Documentation/Logs/ActivityLog.md)
 
+### Code
+- [Getting Started](Documentation/Code/Getting-Started.md)
+
 <br />
 
 ## What is software documentation?
