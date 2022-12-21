@@ -8,6 +8,8 @@ A reference project and product to use as a foundation for integration of work-r
 
 This is a fairly long and convoluted explanation as I don’t know how to present the ideas more succinct, yet. Sorry, but not sorry. It’s incomplete and could use some refinement, but like launching a startup or new product, getting something out there can be more useful than waiting for perfection.
 
+To get started with the application code see the [Getting Started document](Documentation/Code/Getting-Started.md).
+
 <br />
 
 ## Project naming
