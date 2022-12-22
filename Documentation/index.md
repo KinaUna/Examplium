@@ -15,6 +15,12 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 ### Code
 - [Getting Started](Code/Getting-Started.md)
 
+### Peridium
+- [Index](Peridium/Index.md)
+
+### Scion
+All content outside the Peridium directory should be assumed to be Scion content.
+
 <br />
 
 #### Other documentation
