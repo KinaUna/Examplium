@@ -9,14 +9,17 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 
 ## Table of Contents
 
-### Logs
+### [Logs](Logs/Index.md)
 - [Activity Log](Logs/ActivityLog.md)
 
-### Code
+### [Code](Code/Index.md)
 - [Getting Started](Code/Getting-Started.md)
 
-### Peridium
-- [Index](Peridium/Index.md)
+### [Business](Business/Index.md)
+- [Startup](Business/Startup/Index.md)
+  
+
+### [Peridium](Peridium/Index.md)
 
 ### Scion
 All content outside the Peridium directory should be assumed to be Scion content.
