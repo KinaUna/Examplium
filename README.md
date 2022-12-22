@@ -10,6 +10,8 @@ This is a fairly long and convoluted explanation as I don’t know how to presen
 
 To get started with the application code see the [Getting Started document](Documentation/Code/Getting-Started.md).
 
+An overview of the documentation is available here: [Documentation/index.md](Documentation/index.md)
+
 <br />
 
 ## Project naming
