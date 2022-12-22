@@ -113,7 +113,7 @@ Code: Created localdb database with the Entity Framework command `Update-Databas
 
 ### Documentation update
 
-In Business/Startup the initial product plan was added: [First Prototype Plan](Documentation/Business/Startup/0001-First-Prototype-Plan.md)
+In Business/Startup the initial product plan was added: [First Prototype Plan](/Documentation/Business/Startup/0001-First-Prototype-Plan.md)
 
 Added index files for all directories in Documentation.
 
