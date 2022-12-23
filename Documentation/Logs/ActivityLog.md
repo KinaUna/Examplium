@@ -118,3 +118,8 @@ In Business/Startup the initial product plan was added: [First Prototype Plan](/
 Added index files for all directories in Documentation.
 
 <br>
+
+### Github Settings update
+
+Added new Issues templates for Epic, Story, and Task. Inspired by [TopCoder - Project Management on GitHub](https://www.topcoder.com/thrive/articles/project-management-on-github)
+
