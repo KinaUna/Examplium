@@ -1,5 +1,7 @@
 # Examplium - Scion First Product Prototype Plan
 
+Code name: Primal
+
 <br/>
 
 ## Objective
