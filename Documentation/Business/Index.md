@@ -13,7 +13,7 @@
 - Financial
 - Founders
 - Product
-  - [First prototype plan](Startup/Product/0001-First-Prototype-Plan.md)
+  - [First prototype plan](Startup/Product/0001-Primal/First-Prototype-Plan.md)
  
  <br/>
  
