@@ -12,6 +12,8 @@ To get started with the application code see the [Getting Started document](Docu
 
 An overview of the documentation is available here: [Documentation/index.md](Documentation/index.md)
 
+Link to the root directory of the repository for Examplium: [Examplium GitHub Repository](https://github.com/KinaUna/Examplium)
+
 <br />
 
 ## Project naming
@@ -327,6 +329,6 @@ Meanwhile anyone can add their voice, if you have knowledge to share you can wor
 
 First published 18th of December 2022 by Per Rosing von Philipsborn
 
-Last updated 18th of December 2022.
+Last updated 24th of December 2022.
 
 
