@@ -37,5 +37,9 @@ It is not meant to be deployed, it should just run on a development computer and
 | Delete note  | New Feature: Notes | As a user I want to be able to delete notes, so I can keep them organized and current. |
 | View note  | New Feature: Notes | As a user I want to be able to view a note and all it's details, so I can see the content, when it was created and last updated.|
 | List notes  | New Feature: Notes | As a user I want to be able to view a list of my notes, so I can pick one to view, edit, or delete. |
+| ------------- | ------------- | ------------- |
+| Good posture[^1] | Personal health | As a person sitting in a chairt quite a lot, I tend to slouch and tighten my shoulders and neck, I should remind myself to sit up straight more often and maintain a good posture. |
 
 <br/>
+
+[^1]: Not part of the actual project, just a reminder for anyone needing it every now and then.
