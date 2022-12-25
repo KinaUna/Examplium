@@ -9,9 +9,18 @@ This means the project/product plan will be simplified and the work only include
 
 ### Objective
 
+Create the first essential features of the app: User accounts and notes.
+
 <br/>
 
 ### Assumptions
+
+The features are for prototyping only, and will be very basic, more functionality will be added later.
+
+To be used internally only, by developers and maybe some product/project managers and analysts.
+
+It is not meant to be deployed, it should just run on a development computer and doesn't need any database server, web hosting, or any external dependencies.
+
 
 <br/>
 
