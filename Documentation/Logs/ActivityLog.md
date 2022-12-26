@@ -127,9 +127,31 @@ Enable GitHub Pages, with Master branch and root directory as the source.
 
 Added standard templates for Bug reports, Feature requests.
 
+<br>
+
 ### New Epic in Issues
 
-Added an Epic for the startup project.
+Added an Epic (in issues) for the startup project.
 
+Added product documentation for the prototype: Concept development, Competitive analyis, Market research, Development plan.
+Updated the product plan.
+
+Added Epics (in issues) for new features in the first prototype: User Accounts, Notes
+
+Added stories for the previous epics.
+
+<br>
+
+### Business plan
+
+Added business plan in the Business/Startup/Founders directory.
+
+<br>
+
+### Code update
+
+Removed unused code from the initial Visual Studio solution template.
+
+<br>
 
 
