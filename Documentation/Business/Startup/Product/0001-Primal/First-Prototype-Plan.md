@@ -69,6 +69,8 @@ Start with adding features for notes, as they are universally useful, and most l
 
 Create solution in Visual Studio, remove elements from the template that are not needed. In progress.
 
+Add and configure new project for authentication server (Duende Identity Server) in Visual Studio.
+
 Add/update email service(s) for user account features. Not started.
 
 Add/Update server API for user account operations. Not started.
