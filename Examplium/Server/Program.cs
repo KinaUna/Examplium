@@ -1,5 +1,5 @@
 using Examplium.Server.Data;
-using Examplium.Server.Models;
+using Examplium.Shared.Models.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;

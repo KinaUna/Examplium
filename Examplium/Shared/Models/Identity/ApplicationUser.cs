@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Examplium.Server.Models
+namespace Examplium.Shared.Models.Identity
 {
     public class ApplicationUser : IdentityUser
     {
