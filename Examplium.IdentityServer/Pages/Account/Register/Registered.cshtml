@@ -1,0 +1,24 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Account.Register.RegisteredModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h1>Thank you for registering</h1>
+    </div>
+    <div class="row">
+        <div>
+            Thank you for registering a new account.
+        </div>
+        <div>
+            An email has been sent to confirm your email address.
+        </div>
+        <div>
+            If you do not see the email in your inbox within a few minutes, please check your spam/junk email folder. 
+        </div>
+        
+    </div>
+    <div class="row">
+        <a asp-page="Login" asp-route-returnUrl="@Model.View.ReturnUrl">Return to login</a>
+    </div>
+</div>

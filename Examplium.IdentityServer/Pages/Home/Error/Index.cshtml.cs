@@ -1,6 +1,5 @@
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Examplium.IdentityServer.Pages.Home.Error

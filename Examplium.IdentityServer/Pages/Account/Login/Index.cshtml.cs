@@ -25,9 +25,9 @@ namespace Examplium.IdentityServer.Pages.Account.Login
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IIdentityProviderStore _identityProviderStore;
 
-        public LoginViewModel View { get; set; }
+        public LoginViewModel View { get; set; } = new LoginViewModel();
 
-        [BindProperty] public LoginInputModel Input { get; set; }
+        [BindProperty] public LoginInputModel Input { get; set; } = new LoginInputModel();
 
         public IndexModel(IIdentityServerInteractionService interaction,
             IClientStore clientStore,
@@ -37,7 +37,7 @@ namespace Examplium.IdentityServer.Pages.Account.Login
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager)
         {
-            userManager = userManager;
+            _userManager = userManager;
             _signInManager = signInManager;
             _interaction = interaction;
             _clientStore = clientStore;
