@@ -1,5 +1,6 @@
 using Duende.IdentityServer.AspNetIdentity;
 using Examplium.IdentityServer.Data;
+using Examplium.IdentityServer.Services;
 using Examplium.Shared.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -62,6 +63,7 @@ builder.Services.AddIdentityServer(options =>
 
 builder.Services.AddAuthentication();
 
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 
