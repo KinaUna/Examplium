@@ -375,4 +375,44 @@ Copy the content of https://github.com/DuendeSoftware/Samples/blob/main/Identity
 
 <br/>
 
+## Next steps
+
+### Add sign up/register pages.
+The Duende Quickstart project does not have any pages for creating user accounts, they will need to be added next.
+
+### Add confirmation email
+To ensure users own the email address they use for registering a new account, an email with a code should be sent to the users which they can click to confirm that the email belongs to them.
+
+- Add code link generation.
+- Add email service
+- Add Confirmation page
+
+### Add change password and password reset/forgot password features.
+
+### Add change email address feature.
+
+### Add delete account feature
+
+### Add External logins (Google/Apple/Microsoft/Facebook/etc).
+
+### Add 2FA (Two-Factor Authentication)
+
+### Configure clients and APIs to use the Identity Server
+
+- Add Backend for Frontend (BFF) to Examplium.Server and Examplium.Client: https://docs.duendesoftware.com/identityserver/v6/bff/ and https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v6/BFF/BlazorWasm
+- For mobile, microservices, and other clients the APIs will need to be configured too: https://docs.duendesoftware.com/identityserver/v6/apis/ 
+
+### Add GDPR/cookie consent features.
+
+Ideally there should be no cookies to worry about, but if 3rd party cookies will be added (i.e. for Google/Facebook/Apple/Microsoft/etc logins) we need to show the users information about what cookies are used and what for, and they should be given a choice whether to allow them or not.
+ 
+### Update pages and CSS to have a consistent design in the entire solution/product.
+
+### Add language/localization features.
+
+### Other
+
+This implementation was intended for authentication and authorization only, the user information is very limited as the user profile, roles, and other claims will be handled by the other APIs/Services. You could add detailed user profiles, role management, and more here, which could give clients more information directly from the user claims. 
+
+This limitation of user data may add some overhead for the Examplium.Server, and other future services and clients, to manage and validate user related data, but it will also reduce the dependency on Identity Server, so if you find another solution more appropriate it will be easier to reaplce it.
 
