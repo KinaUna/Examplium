@@ -64,6 +64,7 @@ builder.Services.AddIdentityServer(options =>
 builder.Services.AddAuthentication();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 

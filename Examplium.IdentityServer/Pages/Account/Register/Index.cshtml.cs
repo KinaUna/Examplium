@@ -1,3 +1,4 @@
+using Examplium.IdentityServer.Services;
 using Examplium.Shared.Models.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,11 +12,12 @@ namespace Examplium.IdentityServer.Pages.Account.Register
     public class IndexModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        
+        private readonly IEmailSender _emailSender;
 
-        public IndexModel( UserManager<ApplicationUser> userManager)
+        public IndexModel( UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
 
@@ -43,16 +45,21 @@ namespace Examplium.IdentityServer.Pages.Account.Register
                         EmailConfirmed = false
                     };
 
-                    var result = await _userManager.CreateAsync(user, Input.Password);
+                    var createUserResult = await _userManager.CreateAsync(user, Input.Password);
 
-                    if (result.Errors.Any())
+                    if (createUserResult.Errors.Any())
                     {
                         return Page(); // Todo: Show error.
                     }
 
-                    // Todo: generate confirmation code and send it by email.
-
-                    return RedirectToPage(pageName: "Registered", routeValues: new { returnUrl });
+                    string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    if(_emailSender.SendConfirmationEmailToUser(user, code))
+                    {
+                        return RedirectToPage(pageName: "Registered", routeValues: new { returnUrl });
+                    }
+                    
+                    // Todo: Show error.
+                    
                 }
                 
                 return Redirect(returnUrl);
