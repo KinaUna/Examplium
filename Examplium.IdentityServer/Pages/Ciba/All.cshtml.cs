@@ -13,10 +13,10 @@ namespace Examplium.IdentityServer.Pages.Ciba
     [Authorize]
     public class AllModel : PageModel
     {
-        public IEnumerable<BackchannelUserLoginRequest> Logins { get; set; }
+        public IEnumerable<BackchannelUserLoginRequest>? Logins { get; set; }
 
-        [BindProperty, Required] public string Id { get; set; }
-        [BindProperty, Required] public string Button { get; set; }
+        [BindProperty, Required] public string Id { get; set; } = string.Empty;
+        [BindProperty, Required] public string Button { get; set; } = string.Empty;
 
         private readonly IBackchannelAuthenticationInteractionService _backchannelAuthenticationInteraction;
 

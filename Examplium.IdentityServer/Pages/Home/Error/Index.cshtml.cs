@@ -11,7 +11,7 @@ namespace Examplium.IdentityServer.Pages.Home.Error
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IWebHostEnvironment _environment;
 
-        public ErrorViewModel View { get; set; }
+        public ErrorViewModel View { get; set; } = new ErrorViewModel();
 
         public IndexModel(IIdentityServerInteractionService interaction, IWebHostEnvironment environment)
         {

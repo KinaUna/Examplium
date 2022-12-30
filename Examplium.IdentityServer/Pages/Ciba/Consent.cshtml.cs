@@ -29,10 +29,10 @@ namespace Examplium.IdentityServer.Pages.Ciba
             _logger = logger;
         }
 
-        public CibaViewModel View { get; set; }
+        public CibaViewModel? View { get; set; } = new CibaViewModel();
 
         [BindProperty]
-        public CibaInputModel Input { get; set; }
+        public CibaInputModel Input { get; set; } = new CibaInputModel();
 
         public async Task<IActionResult> OnGet(string id)
         {
@@ -53,14 +53,14 @@ namespace Examplium.IdentityServer.Pages.Ciba
         public async Task<IActionResult> OnPost()
         {
             // validate return url is still valid
-            var request = await _interaction.GetLoginRequestByInternalIdAsync(Input.Id);
+            var request = await _interaction.GetLoginRequestByInternalIdAsync(Input?.Id);
             if (request == null || request.Subject.GetSubjectId() != User.GetSubjectId())
             {
-                _logger.LogError("Invalid id {id}", Input.Id);
+                _logger.LogError("Invalid id {id}", Input?.Id);
                 return RedirectToPage("/Home/Error/Index");
             }
 
-            CompleteBackchannelLoginRequest result = null;
+            CompleteBackchannelLoginRequest? result = null;
 
             // user clicked 'no' - send back the standard 'access_denied' response
             if (Input?.Button == "no")
@@ -110,14 +110,18 @@ namespace Examplium.IdentityServer.Pages.Ciba
             }
 
             // we need to redisplay the consent UI
-            View = await BuildViewModelAsync(Input.Id, Input);
+            if(Input != null && Input.Id != null )
+            {            
+                View = await BuildViewModelAsync(Input.Id, Input);
+            }
+
             return Page();
         }
 
-        private async Task<CibaViewModel> BuildViewModelAsync(string id, CibaInputModel model = null)
+        private async Task<CibaViewModel?> BuildViewModelAsync(string id, CibaInputModel? model = null)
         {
             var request = await _interaction.GetLoginRequestByInternalIdAsync(id);
-            if (request != null && request.Subject.GetSubjectId() == User.GetSubjectId())
+            if (request != null && request.Subject.GetSubjectId() == User.GetSubjectId() && model != null)
             {
                 return CreateConsentViewModel(model, id, request);
             }

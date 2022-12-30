@@ -2,11 +2,11 @@
 {
     public class DeviceInputModel
     {
-        public string Button { get; set; }
-        public IEnumerable<string> ScopesConsented { get; set; }
+        public string Button { get; set; } = string.Empty;
+        public IEnumerable<string> ScopesConsented { get; set; } = new List<string>();
         public bool RememberConsent { get; set; } = true;
-        public string ReturnUrl { get; set; }
-        public string Description { get; set; }
-        public string UserCode { get; set; }
+        public string ReturnUrl { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string UserCode { get; set; } = string.Empty;
     }
 }

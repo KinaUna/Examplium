@@ -29,7 +29,7 @@ namespace Examplium.IdentityServer.Pages.Grants
             _events = events;
         }
 
-        public GrantsViewModel View { get; set; }
+        public GrantsViewModel View { get; set; } = new GrantsViewModel();
 
         public async Task OnGet()
         {
@@ -68,7 +68,7 @@ namespace Examplium.IdentityServer.Pages.Grants
 
         [BindProperty]
         [Required]
-        public string ClientId { get; set; }
+        public string ClientId { get; set; } = string.Empty;
 
         public async Task<IActionResult> OnPost()
         {

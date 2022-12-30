@@ -7,7 +7,7 @@ namespace Examplium.IdentityServer.Pages
     [AllowAnonymous]
     public class IndexModel : PageModel
     {
-        public string Version;
+        public string? Version;
 
         public void OnGet()
         {

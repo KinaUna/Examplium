@@ -15,6 +15,6 @@ namespace Examplium.IdentityServer.Pages.Home.Error
             Error = new ErrorMessage { Error = error };
         }
 
-        public ErrorMessage Error { get; set; }
+        public ErrorMessage Error { get; set; } = new ErrorMessage();
     }
 }

@@ -9,17 +9,21 @@ namespace Examplium.IdentityServer.Pages.Diagnostics
     [Authorize]
     public class IndexModel : PageModel
     {
-        public DiagnosticsViewModel View { get; set; }
+        public DiagnosticsViewModel? View { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
-            var localAddresses = new string[] { "127.0.0.1", "::1", HttpContext.Connection.LocalIpAddress.ToString() };
-            if (!localAddresses.Contains(HttpContext.Connection.RemoteIpAddress.ToString()))
+            if(HttpContext.Connection.LocalIpAddress != null)
             {
-                return NotFound();
-            }
+                var localAddresses = new string[] { "127.0.0.1", "::1", HttpContext.Connection.LocalIpAddress.ToString() };
+                if (HttpContext.Connection.RemoteIpAddress != null && !localAddresses.Contains(HttpContext.Connection.RemoteIpAddress.ToString()))
+                {
+                    return NotFound();
+                }
 
-            View = new DiagnosticsViewModel(await HttpContext.AuthenticateAsync());
+                View = new DiagnosticsViewModel(await HttpContext.AuthenticateAsync());
+            }
+            
 
             return Page();
         }

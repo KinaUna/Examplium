@@ -28,10 +28,10 @@ namespace Examplium.IdentityServer.Pages.Consent
             _logger = logger;
         }
 
-        public ConsentViewModel View { get; set; }
+        public ConsentViewModel? View { get; set; } = new ConsentViewModel();
 
         [BindProperty]
-        public ConsentInputModel Input { get; set; }
+        public ConsentInputModel Input { get; set; } = new ConsentInputModel();
 
         public async Task<IActionResult> OnGet(string returnUrl)
         {
@@ -55,7 +55,7 @@ namespace Examplium.IdentityServer.Pages.Consent
             var request = await _interaction.GetAuthorizationContextAsync(Input.ReturnUrl);
             if (request == null) return RedirectToPage("/Error/Index");
 
-            ConsentResponse grantedConsent = null;
+            ConsentResponse? grantedConsent = null;
 
             // user clicked 'no' - send back the standard 'access_denied' response
             if (Input?.Button == "no")
@@ -97,7 +97,7 @@ namespace Examplium.IdentityServer.Pages.Consent
                 ModelState.AddModelError("", ConsentOptions.InvalidSelectionErrorMessage);
             }
 
-            if (grantedConsent != null)
+            if (grantedConsent != null && Input != null)
             {
                 // communicate outcome of consent back to identityserver
                 await _interaction.GrantConsentAsync(request, grantedConsent);
@@ -114,21 +114,29 @@ namespace Examplium.IdentityServer.Pages.Consent
             }
 
             // we need to redisplay the consent UI
-            View = await BuildViewModelAsync(Input.ReturnUrl, Input);
+            if(Input != null)
+            {
+                View = await BuildViewModelAsync(Input.ReturnUrl, Input);
+            }
+
             return Page();
         }
 
-        private async Task<ConsentViewModel> BuildViewModelAsync(string returnUrl, ConsentInputModel model = null)
+        private async Task<ConsentViewModel?> BuildViewModelAsync(string? returnUrl, ConsentInputModel? model = null)
         {
-            var request = await _interaction.GetAuthorizationContextAsync(returnUrl);
-            if (request != null)
+            if (!string.IsNullOrEmpty(returnUrl))
             {
-                return CreateConsentViewModel(model, returnUrl, request);
+                var request = await _interaction.GetAuthorizationContextAsync(returnUrl);
+                if (request != null && model != null)
+                {
+                    return CreateConsentViewModel(model, returnUrl, request);
+                }
+                else
+                {
+                    _logger.LogError("No consent request matching request: {0}", returnUrl);
+                }
             }
-            else
-            {
-                _logger.LogError("No consent request matching request: {0}", returnUrl);
-            }
+            
             return null;
         }
 

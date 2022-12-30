@@ -4,10 +4,10 @@ namespace Examplium.IdentityServer.Pages.Consent
 {
     public class ConsentInputModel
     {
-        public string Button { get; set; }
-        public IEnumerable<string> ScopesConsented { get; set; }
+        public string Button { get; set; } = string.Empty;
+        public IEnumerable<string>? ScopesConsented { get; set; }
         public bool RememberConsent { get; set; } = true;
-        public string ReturnUrl { get; set; }
-        public string Description { get; set; }
+        public string ReturnUrl { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
     }
 }

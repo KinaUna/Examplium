@@ -33,10 +33,10 @@ namespace Examplium.IdentityServer.Pages.Device
             _logger = logger;
         }
 
-        public DeviceViewModel View { get; set; }
+        public DeviceViewModel? View { get; set; } = new DeviceViewModel();
 
         [BindProperty]
-        public DeviceInputModel Input { get; set; }
+        public DeviceInputModel Input { get; set; } = new DeviceInputModel();
 
         public async Task<IActionResult> OnGet(string userCode)
         {
@@ -69,7 +69,7 @@ namespace Examplium.IdentityServer.Pages.Device
             var request = await _interaction.GetAuthorizationContextAsync(Input.UserCode);
             if (request == null) return RedirectToPage("/Error/Index");
 
-            ConsentResponse grantedConsent = null;
+            ConsentResponse? grantedConsent = null;
 
             // user clicked 'no' - send back the standard 'access_denied' response
             if (Input.Button == "no")
@@ -129,7 +129,7 @@ namespace Examplium.IdentityServer.Pages.Device
         }
 
 
-        private async Task<DeviceViewModel> BuildViewModelAsync(string userCode, DeviceInputModel model = null)
+        private async Task<DeviceViewModel?> BuildViewModelAsync(string userCode, DeviceInputModel? model = null)
         {
             var request = await _interaction.GetAuthorizationContextAsync(userCode);
             if (request != null)
@@ -140,7 +140,7 @@ namespace Examplium.IdentityServer.Pages.Device
             return null;
         }
 
-        private DeviceViewModel CreateConsentViewModel(DeviceInputModel model, DeviceFlowAuthorizationRequest request)
+        private DeviceViewModel CreateConsentViewModel(DeviceInputModel? model, DeviceFlowAuthorizationRequest request)
         {
             var vm = new DeviceViewModel
             {

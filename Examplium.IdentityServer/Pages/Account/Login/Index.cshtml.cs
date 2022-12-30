@@ -97,7 +97,7 @@ namespace Examplium.IdentityServer.Pages.Account.Login
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByNameAsync(Input.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
+                    await _events.RaiseAsync(new UserLoginSuccessEvent(user?.UserName, user?.Id, user?.UserName, clientId: context?.Client.ClientId));
 
                     if (context != null)
                     {
@@ -144,7 +144,7 @@ namespace Examplium.IdentityServer.Pages.Account.Login
                 ReturnUrl = returnUrl
             };
 
-            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            AuthorizationRequest? context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
             {
                 var local = context.IdP == Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider;
@@ -155,9 +155,9 @@ namespace Examplium.IdentityServer.Pages.Account.Login
                     EnableLocalLogin = local,
                 };
 
-                Input.Username = context?.LoginHint;
+                Input.Username = context?.LoginHint ?? string.Empty;
 
-                if (!local)
+                if (!local && context != null)
                 {
                     View.ExternalProviders = new[] { new LoginViewModel.ExternalProvider { AuthenticationScheme = context.IdP } };
                 }
