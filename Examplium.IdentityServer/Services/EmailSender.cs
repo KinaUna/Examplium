@@ -47,13 +47,13 @@ namespace Examplium.IdentityServer.Services
             }
         }
 
-        public bool SendConfirmationEmailToUser(ApplicationUser user, string code)
+        public bool SendConfirmationEmailToUser(ApplicationUser user, string code, string returnUrl)
         {
             if(!string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(code))
             {
                 var currentContext = _httpContextAccessor.HttpContext;
                 string encodedCode = Uri.EscapeDataString(code);
-                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/Register/ConfirmEmail?userId={user.Id}&code={encodedCode}";
+                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/Register/ConfirmEmail?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
 
                 string emailSubject = "Confirm your email";
                 string emailText = $"Please confirm your {ExampliumCoreConstants.ApplicationName} account's email address by clicking this link: <a href='{codeLink}'>link</a>";

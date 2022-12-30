@@ -53,7 +53,7 @@ namespace Examplium.IdentityServer.Pages.Account.Register
                     }
 
                     string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    if(_emailSender.SendConfirmationEmailToUser(user, code))
+                    if(_emailSender.SendConfirmationEmailToUser(user, code, Input.ReturnUrl))
                     {
                         return RedirectToPage(pageName: "Registered", routeValues: new { Input.ReturnUrl });
                     }
