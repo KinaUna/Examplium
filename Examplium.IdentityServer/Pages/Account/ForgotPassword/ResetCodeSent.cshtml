@@ -1,0 +1,17 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Account.ForgotPassword.ResetCodeSentModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h1>Password reset link sent</h1>
+    </div>
+    <div class="row">
+        <div>
+            Please check your email for further instructions on how to reset your password.
+        </div>
+    </div>
+    <div class="row">
+        <a asp-page="/Account/Login/Index" asp-route-returnUrl="@Model.View.ReturnUrl">Return to login</a>
+    </div>
+</div>

@@ -62,5 +62,21 @@ namespace Examplium.IdentityServer.Services
             
             return false;
         }
+
+        public bool SendPasswordResetEmailToUser(ApplicationUser user, string code, string returnUrl)
+        {
+            if (!string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(code))
+            {
+                var currentContext = _httpContextAccessor.HttpContext;
+                string encodedCode = Uri.EscapeDataString(code);
+                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/ForgotPassword/ResetPassword?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
+
+                string emailSubject = "Reset password";
+                string emailText = $"Please click the following link to reset your {ExampliumCoreConstants.ApplicationName} account's password: <a href='{codeLink}'>link</a>";
+                return SendEmail(user.Email, emailSubject, emailText);
+            }
+
+            return false;
+        }
     }
 }
