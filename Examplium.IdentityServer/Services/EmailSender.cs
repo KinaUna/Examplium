@@ -2,7 +2,6 @@
 using System.Net;
 using Examplium.Shared.Constants;
 using Examplium.Shared.Models.Identity;
-using System.Text.Encodings.Web;
 
 namespace Examplium.IdentityServer.Services
 {
