@@ -17,8 +17,12 @@ namespace Examplium.IdentityServer.Pages.Account.Register
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> OnGet(string userId, string code)
+        [BindProperty] public RegisterViewModel View { get; set; } = new RegisterViewModel();
+
+        public async Task<IActionResult> OnGet(string userId, string code, string returnUrl)
         {
+            View = new RegisterViewModel { ReturnUrl = returnUrl };
+
             if (!string.IsNullOrEmpty(userId) &&  !string.IsNullOrEmpty(code))
             {
                 ApplicationUser? user = await _userManager.FindByIdAsync(userId);
@@ -31,7 +35,7 @@ namespace Examplium.IdentityServer.Pages.Account.Register
 
                 if (user.EmailConfirmed)
                 {
-                    return RedirectToPage("/Account/Login/Index");
+                    return Page();
                 }
 
                 IdentityResult confirmEmailCodeResult = await _userManager.ConfirmEmailAsync(user, code);
@@ -41,7 +45,7 @@ namespace Examplium.IdentityServer.Pages.Account.Register
                 }
             }            
             
-            return RedirectToPage("/Account/Login/Index");
+            return RedirectToPage(pageName: "/Account/Login/Index", routeValues: new { View.ReturnUrl });
         }
     }
 }

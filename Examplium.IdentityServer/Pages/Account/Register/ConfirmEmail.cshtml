@@ -15,6 +15,6 @@
         </div>
     </div>
     <div class="row">
-        <a asp-page="/Account/Login/Index">Go to login</a>
+        <a asp-page="/Account/Login/Index" asp-route-returnUrl="@Model.View.ReturnUrl">Go to login</a>
     </div>
 </div>
