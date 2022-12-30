@@ -1,4 +1,5 @@
 ﻿@using Examplium.Shared.Constants
+@using Microsoft.AspNetCore.Http.Extensions;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                @{
+                                    string returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : Context.Request.GetEncodedUrl();
+                                }
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/ChangePassword/Index" asp-route-returnUrl="@returnUrl">Change Password</a>
+                            </li>
+                        }
+                        
                     </ul>
                 </div>
             </div>
