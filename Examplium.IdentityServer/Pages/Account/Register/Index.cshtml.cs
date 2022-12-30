@@ -32,7 +32,7 @@ namespace Examplium.IdentityServer.Pages.Account.Register
             return Page();
         }
 
-        public async Task<IActionResult> OnPost(string returnUrl)
+        public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
@@ -55,14 +55,14 @@ namespace Examplium.IdentityServer.Pages.Account.Register
                     string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     if(_emailSender.SendConfirmationEmailToUser(user, code))
                     {
-                        return RedirectToPage(pageName: "Registered", routeValues: new { returnUrl });
+                        return RedirectToPage(pageName: "Registered", routeValues: new { Input.ReturnUrl });
                     }
                     
                     // Todo: Show error.
                     
                 }
                 
-                return Redirect(returnUrl);
+                return Redirect(Input.ReturnUrl);
                 
             }
 
