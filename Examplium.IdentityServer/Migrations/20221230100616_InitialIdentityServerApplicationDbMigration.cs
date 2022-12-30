@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Examplium.IdentityServer.Migrations.ApplicationDb
+namespace Examplium.IdentityServer.Migrations
 {
     /// <inheritdoc />
     public partial class InitialIdentityServerApplicationDbMigration : Migration

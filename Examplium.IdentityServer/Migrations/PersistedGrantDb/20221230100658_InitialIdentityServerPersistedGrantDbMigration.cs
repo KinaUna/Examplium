@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Examplium.IdentityServer.Migrations
+namespace Examplium.IdentityServer.Migrations.PersistedGrantDb
 {
     /// <inheritdoc />
     public partial class InitialIdentityServerPersistedGrantDbMigration : Migration

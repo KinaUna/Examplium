@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Examplium.IdentityServer.Migrations.ApplicationDb
+namespace Examplium.IdentityServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221230094555_InitialIdentityServerApplicationDbMigration")]
+    [Migration("20221230100616_InitialIdentityServerApplicationDbMigration")]
     partial class InitialIdentityServerApplicationDbMigration
     {
         /// <inheritdoc />

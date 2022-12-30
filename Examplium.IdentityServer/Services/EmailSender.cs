@@ -53,11 +53,11 @@ namespace Examplium.IdentityServer.Services
             if(!string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(code))
             {
                 var currentContext = _httpContextAccessor.HttpContext;
-
-                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/Register/ConfirmEmail?userId={user.Id}&code={code}";
+                string encodedCode = Uri.EscapeDataString(code);
+                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/Register/ConfirmEmail?userId={user.Id}&code={encodedCode}";
 
                 string emailSubject = "Confirm your email";
-                string emailText = $"Please confirm your {ExampliumCoreConstants.ApplicationName} account's email address by clicking this link: <a href='{HtmlEncoder.Default.Encode(codeLink)}'>link</a>";
+                string emailText = $"Please confirm your {ExampliumCoreConstants.ApplicationName} account's email address by clicking this link: <a href='{codeLink}'>link</a>";
                 return SendEmail(user.Email, emailSubject, emailText);
             }
             
