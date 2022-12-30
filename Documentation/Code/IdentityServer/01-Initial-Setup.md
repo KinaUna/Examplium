@@ -339,6 +339,15 @@ Before running the application the database needs to be created and the configur
 
 In the "Package Manager Console" run these commands:
 
+### ApplicationDbContext
+```
+add-migration InitialIdentityServerApplicationDbMigration -Project Examplium.IdentityServer -Context ApplicationDbContext
+```
+
+```
+update-database -Project Examplium.IdentityServer -Context ApplicationDbContext
+```
+
 ### PersistedGrantDbContext
 
 ```
