@@ -182,7 +182,8 @@ namespace Examplium.IdentityServer.Data
         {
             using var serviceScope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
             serviceScope?.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
+            serviceScope?.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            
             var context = serviceScope?.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
             context?.Database.Migrate();
             if (context != null && !context.Clients.Any())
