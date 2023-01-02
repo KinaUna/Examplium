@@ -9,7 +9,7 @@ In Examplium.IdentityServer/Services/IEmailSender.cs add this line:
 bool SendChangePasswordEmailToUser(ApplicationUser user, string code, string returnUrl);
 ```
 
-Examplium.IdentityServer/Services/IEmailSender.cs add this code after the `SendConfirmationToUser()` method:
+Examplium.IdentityServer/Services/EmailSender.cs add this code after the `SendConfirmationToUser()` method:
 ```
 public bool SendChangePasswordEmailToUser(ApplicationUser user, string code, string returnUrl)
 {
