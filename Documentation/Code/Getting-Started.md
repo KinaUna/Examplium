@@ -2,9 +2,11 @@
 
 This document describes what you need to get up and running with the code in this repository.
 
+At this point, the code only has configuration settings for debugging.
+
 <br/>
 
-## Prerequisites:
+### Prerequisites:
 - Visual Studio 2022 17.4.3
   - Visual Studio Workloads/Components installed:
     - ASP.NET and web development
@@ -12,7 +14,7 @@ This document describes what you need to get up and running with the code in thi
     - Azure Development
     - Data storage and processing
 - Entity Framework Core - version 7.0.0
-- 
+
 
 Todo: Instructions for installing Visual Studio, Entity Framework Core.
 
@@ -24,10 +26,64 @@ Todo: Instructions for cloning code.
 
 <br/>
 
+## Update Constants
+
+If you want to change the name of the organization and/or app: 
+
+- Update values in Examplium.Shared/Constants/ExampliumCoreConstants.cs
+
+<br/>
+
+Verify that Examplium.IdentityServer and Examplium.Server addresses are correct:
+
+- Look in Examplium.IdentityServer/Properties/launchSettings.json
+- Look in Examplium.Server/Properties/launchSettings.json
+- Make sure that the values in Examplium.Shared/Constants/ExampliumAuthServerConstants.cs are the same.
+- If you changed the name of the app or organization, you should change the CoreApiName too.
+
+<br/>
+
+## Configure Examplium.IdentityServer
+
+Right click on the Examplium.IdentityServer project, select "Manage User Secrets...".
+
+Copy the contents of Examplium.IdentityServer/SecretsTemplate.txt to the secrets.json file.
+
+Update the values for 
+- CoreApiSecret (pick your own code, any strong password should do)
+- EmailServer (the server for your email service, i.e. for GMail see https://developers.google.com/gmail/imap/imap-smtp)
+- EmailPort (The port number to use for sending emails, usually 465 or 587)
+- EmailUserName (Your email account's user name, usually your email address)
+- EmailPassword (Your email account's password)
+- EmailFrom (The email address you want the recepient to see in the "From" field)
+
+<br/>
+
 ## Apply database migrations
 
-In the Package Manager Console, run the command: `Update-Database`
+In the Package Manager Console run these commands:
 
-This will create the database if it doesn't exist and update it if needed.
+```
+add-migration InitialIdentityServerApplicationDbMigration -Project Examplium.IdentityServer -Context ApplicationDbContext
+```
+```
+update-database -Project Examplium.IdentityServer -Context ApplicationDbContext
+```
+
+```
+add-migration InitialIdentityServerPersistedGrantDbMigration -Project Examplium.IdentityServer -Context PersistedGrantDbContext
+```
+
+```
+update-database -Project Examplium.IdentityServer -Context PersistedGrantDbContext
+```
+
+```
+add-migration InitialIdentityServerConfigurationDbMigration -Project Examplium.IdentityServer -Context ConfigurationDbContext
+```
+
+```
+update-database -Project Examplium.IdentityServer -Context ConfigurationDbContext
+```
 
 <br/>
