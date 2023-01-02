@@ -18,33 +18,40 @@ namespace Examplium.IdentityServer.Services
 
         public bool SendEmail(string email, string subject, string message)
         {
-            var emailServerString = _configuration["EmailServer"] ?? throw new InvalidOperationException("Configuration string 'EmailServer' not found.");
+            var emailServerString = _configuration["EmailServer"] ?? throw new InvalidOperationException("Configuration string 'EmailServer' not found, check your configuration settings.");
             SmtpClient emailClient = new SmtpClient(emailServerString);
             emailClient.UseDefaultCredentials = false;
-            var emailUserNameString = _configuration["EmailUserName"] ?? throw new InvalidOperationException("Configuration string 'EmailUserName' not found.");
-            var emailPasswordString = _configuration["EmailPassword"] ?? throw new InvalidOperationException("Configuration string 'EmailPassword' not found.");
-            emailClient.Credentials = new NetworkCredential(emailUserNameString, emailPasswordString);
-            emailClient.EnableSsl = true;
-            emailClient.Port = 587;
-
-            MailMessage mailMessage = new MailMessage();
-            
-            var emailFromString = _configuration["EmailFrom"] ?? throw new InvalidOperationException("Configuration string 'EmailFrom' not found.");
-            mailMessage.From = new MailAddress(emailFromString, "Support - " + ExampliumCoreConstants.ApplicationName);
-            mailMessage.To.Add(email);
-            mailMessage.Body = message;
-            mailMessage.IsBodyHtml = true;
-            mailMessage.Subject = subject;
-
-            try
+            var emailUserNameString = _configuration["EmailUserName"] ?? throw new InvalidOperationException("Configuration string 'EmailUserName' not found, check your configuration settings.");
+            var emailPasswordString = _configuration["EmailPassword"] ?? throw new InvalidOperationException("Configuration string 'EmailPassword' not found, check your configuration settings.");
+            var emailPortString= _configuration["EmailPort"] ?? throw new InvalidOperationException("Configuration string 'EmailPort' not found, check your configuration settings.");
+            var emailPortValid = int.TryParse(emailPortString, out int emailPortNumber);
+            if (emailPortValid)
             {
-                emailClient.SendMailAsync(mailMessage);
-                return true;
+                emailClient.Credentials = new NetworkCredential(emailUserNameString, emailPasswordString);
+                emailClient.EnableSsl = true;
+                emailClient.Port = emailPortNumber;
+
+                MailMessage mailMessage = new MailMessage();
+
+                var emailFromString = _configuration["EmailFrom"] ?? throw new InvalidOperationException("Configuration string 'EmailFrom' not found, check your configuration settings.");
+                mailMessage.From = new MailAddress(emailFromString, ExampliumCoreConstants.ApplicationName);
+                mailMessage.To.Add(email);
+                mailMessage.Body = message;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Subject = subject;
+
+                try
+                {
+                    emailClient.SendMailAsync(mailMessage);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
-            {
-                return false;
-            }
+
+            throw new InvalidOperationException("Unable to parse string 'EmailPort', check your configuration settings.");
         }
 
         public bool SendConfirmationEmailToUser(ApplicationUser user, string code, string returnUrl)
