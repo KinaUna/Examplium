@@ -1,4 +1,4 @@
-# Add Password Reset / Forgot Password Feature
+# Add Change Password Feature
 
 Note: This feature depends on the email service created in [Add Confirmation Email](https://github.com/KinaUna/Examplium/blob/master/Documentation/Code/IdentityServer/03-Add-Confirmation-Email.md)
 
