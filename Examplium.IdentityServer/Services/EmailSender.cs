@@ -39,7 +39,7 @@ namespace Examplium.IdentityServer.Services
                 mailMessage.Body = message;
                 mailMessage.IsBodyHtml = true;
                 mailMessage.Subject = subject;
-
+                
                 try
                 {
                     emailClient.SendMailAsync(mailMessage);
@@ -63,7 +63,7 @@ namespace Examplium.IdentityServer.Services
                 string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/Register/ConfirmEmail?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
 
                 string emailSubject = "Confirm your email";
-                string emailText = $"Please confirm your {ExampliumCoreConstants.ApplicationName} account's email address by clicking this link: <a href='{codeLink}'>link</a>";
+                string emailText = $"Please confirm your {ExampliumCoreConstants.OrganizationName} account's email address by clicking this link: <a href='{codeLink}'>link</a>";
                 return SendEmail(user.Email, emailSubject, emailText);
             }
             
@@ -79,7 +79,7 @@ namespace Examplium.IdentityServer.Services
                 string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/ForgotPassword/ResetPassword?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
 
                 string emailSubject = "Reset password";
-                string emailText = $"Please click the following link to reset your {ExampliumCoreConstants.ApplicationName} account's password: <a href='{codeLink}'>link</a>";
+                string emailText = $"Please click the following link to reset your {ExampliumCoreConstants.OrganizationName} account's password: <a href='{codeLink}'>link</a>";
                 return SendEmail(user.Email, emailSubject, emailText);
             }
 
@@ -95,7 +95,23 @@ namespace Examplium.IdentityServer.Services
                 string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/ChangePassword/ResetPassword?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
 
                 string emailSubject = "Change password";
-                string emailText = $"Please click the following link to change your {ExampliumCoreConstants.ApplicationName} account's password: <a href='{codeLink}'>link</a>";
+                string emailText = $"Please click the following link to change your {ExampliumCoreConstants.OrganizationName} account's password: <a href='{codeLink}'>link</a>";
+                return SendEmail(user.Email, emailSubject, emailText);
+            }
+
+            return false;
+        }
+
+        public bool SendDeleteAccountEmailToUser(ApplicationUser user, string code, string returnUrl)
+        {
+            if (!string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(code))
+            {
+                var currentContext = _httpContextAccessor.HttpContext;
+                string encodedCode = Uri.EscapeDataString(code);
+                string codeLink = $"{currentContext?.Request.Scheme}://{currentContext?.Request.Host}/Account/DeleteAccount/ConfirmDelete?userId={user.Id}&code={encodedCode}&returnUrl={returnUrl}";
+
+                string emailSubject = "Delete Account";
+                string emailText = $"Click the following link to delete your {ExampliumCoreConstants.OrganizationName} account: <a href='{codeLink}'>link</a>";
                 return SendEmail(user.Email, emailSubject, emailText);
             }
 

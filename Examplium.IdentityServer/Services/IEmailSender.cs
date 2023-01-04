@@ -8,5 +8,6 @@ namespace Examplium.IdentityServer.Services
         bool SendConfirmationEmailToUser(ApplicationUser user, string code, string returnUrl);
         bool SendPasswordResetEmailToUser(ApplicationUser user, string code, string returnUrl);
         bool SendChangePasswordEmailToUser(ApplicationUser user, string code, string returnUrl);
+        bool SendDeleteAccountEmailToUser(ApplicationUser user, string code, string returnUrl);
     }
 }
