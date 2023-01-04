@@ -1,4 +1,4 @@
-# Add Delete Account Feture to Identity Server
+# Add Delete Account Feature to Identity Server
 
 <br/>
 
