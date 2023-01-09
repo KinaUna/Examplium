@@ -47,6 +47,8 @@ Verify that Examplium.IdentityServer and Examplium.Server addresses are correct:
 
 Right click on the Examplium.IdentityServer project, select "Manage User Secrets...".
 
+For more information about configuration and secrets in ASP.NET Core see https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0
+
 Copy the contents of Examplium.IdentityServer/SecretsTemplate.txt to the secrets.json file.
 
 Update the values for 
