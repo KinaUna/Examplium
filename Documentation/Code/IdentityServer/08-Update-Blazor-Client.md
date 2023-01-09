@@ -206,3 +206,11 @@ await builder.Build().RunAsync();
 ```
 
 <br/>
+
+### Remove obsolete code
+
+In the folder Examplium.Client/Shared/ delete these files:
+- LoginDisplay.razor
+- RedirectToLogin.razor
+
+<br/>
