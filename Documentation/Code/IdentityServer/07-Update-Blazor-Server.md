@@ -98,3 +98,11 @@ Move Examplium.IdentityServer to the top, so it starts first, and set the action
 
 Set Examplium.Server's action to "Start" as well.
 
+
+### Remove obsolete code
+
+Delete the Examplium.Server/Areas/ folder as these folders and files are no longer needed.
+
+Also delete the Examplium.Server/Controllers/OidcConfigurationController.cs
+
+
