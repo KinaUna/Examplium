@@ -139,7 +139,7 @@ namespace Examplium.IdentityServer.Data
 
                     // where to redirect to after login
                     RedirectUris = { ExampliumAuthServerConstants.WebServerUrlDebug + "/signin-oidc" },
-
+                    FrontChannelLogoutUri = ExampliumAuthServerConstants.WebServerUrlDebug + "/signout-oidc",
                     // where to redirect to after logout
                     PostLogoutRedirectUris = { ExampliumAuthServerConstants.WebServerUrlDebug + "/signout-callback-oidc" },
 
@@ -156,7 +156,7 @@ namespace Examplium.IdentityServer.Data
 }
 ```
 
-<br/>>
+<br/>
 
 ### IdentityServerInitialization
 
