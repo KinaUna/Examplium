@@ -1,4 +1,5 @@
 using Examplium.Server.Data;
+using Examplium.Shared.Constants;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,43 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddBff();
+
+var coreApiSecretString = builder.Configuration["CoreApiSecret"] ?? throw new InvalidOperationException("Configuration string 'CoreApiSecret' not found.");
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = "cookie";
+        options.DefaultChallengeScheme = "oidc";
+        options.DefaultSignOutScheme = "oidc";
+    })
+    .AddCookie("cookie", options =>
+    {
+        options.Cookie.Name = "__Host-blazor";
+        options.Cookie.SameSite = SameSiteMode.Strict;
+    })
+    .AddOpenIdConnect("oidc", options =>
+    {
+        if (builder.Environment.IsDevelopment())
+        {
+            options.Authority = ExampliumAuthServerConstants.IdentityServerUrlDebug;
+            options.ClientId = "Examplium.WebServer.Debug";
+        }
+
+        options.ClientSecret = coreApiSecretString;
+        options.ResponseType = "code";
+        options.ResponseMode = "query";
+
+        options.Scope.Clear();
+        options.Scope.Add("openid");
+        options.Scope.Add(ExampliumAuthServerConstants.CoreApiName);
+        options.Scope.Add("offline_access");
+
+        options.MapInboundClaims = false;
+        options.GetClaimsFromUserInfoEndpoint = true;
+        options.SaveTokens = true;
+    });
 
 var app = builder.Build();
 
@@ -36,8 +74,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseBff();
 app.UseAuthorization();
 
+app.MapBffManagementEndpoints();
 
 app.MapRazorPages();
 app.MapControllers();
