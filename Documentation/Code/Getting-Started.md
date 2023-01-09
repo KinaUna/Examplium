@@ -89,3 +89,15 @@ update-database -Project Examplium.IdentityServer -Context ConfigurationDbContex
 ```
 
 <br/>
+
+## Update "Startup Project" settings
+
+In the solution explorer right click on "Solution 'Examplium'", then select "Select Startup Projects...".
+
+Select the option "Multiple startup projects".
+
+Move Examplium.IdentityServer to the top, so it starts first, and set the action to "Start".
+
+Set Examplium.Server's action to "Start" as well.
+
+<br/>
