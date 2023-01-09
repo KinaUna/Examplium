@@ -1,0 +1,46 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Account.DeleteAccount.IndexModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h1>Delete Account</h1>
+    </div>
+
+    <partial name="_ValidationSummary" />
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Delete @Examplium.Shared.Constants.ExampliumCoreConstants.OrganizationName Account</h2>
+                </div>
+
+                <div class="card-body">
+                    <div>Enter your email and password below and click "Delete my account" to confirm you want to delete your account.</div>
+                    <form asp-page="/Account/DeleteAccount/Index">
+                        <input type="hidden" asp-for="Input.ReturnUrl" />
+
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input class="form-control" placeholder="Email" asp-for="Input.Email">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
+                        </div>
+                        <button class="btn btn-primary" name="Input.Button" value="deleteaccount">Delete my account</button>
+                        <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancel</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        When you click "Delete my account" an email will be sent to your email address with further instructions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

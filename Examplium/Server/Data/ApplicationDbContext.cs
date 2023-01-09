@@ -1,16 +1,10 @@
-﻿using Duende.IdentityServer.EntityFramework.Options;
-using Examplium.Server.Models;
-using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Examplium.Server.Data
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(
-            DbContextOptions options,
-            IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
     }

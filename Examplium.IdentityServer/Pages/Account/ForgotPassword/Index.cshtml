@@ -1,0 +1,43 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Account.ForgotPassword.IndexModel
+@{
+}
+
+<div class="login-page">
+    <div class="lead">
+        <h1>Forgot Password</h1>
+    </div>
+
+    <partial name="_ValidationSummary" />
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Reset password</h2>
+                </div>
+
+                <div class="card-body">
+                    <form asp-page="/Account/ForgotPassword/Index">
+                        <input type="hidden" asp-for="Input.ReturnUrl" />
+
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input class="form-control" placeholder="Email" asp-for="Input.Email" autofocus>
+                        </div>
+                        
+                        <button class="btn btn-primary" name="Input.Button" value="passwordreset">Reset my password</button>
+                        <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancel</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        When you click "Reset my password" an email will be sent to the email address entered above with further instructions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

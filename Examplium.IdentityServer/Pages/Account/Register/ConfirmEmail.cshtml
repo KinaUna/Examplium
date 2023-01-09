@@ -1,0 +1,20 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Account.Register.ConfirmEmailModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h1>Email address confirmed</h1>
+    </div>
+    <div class="row">
+        <div>
+            Your email address has been confirmed and your account is now active.
+        </div>
+        <div>
+            You can now log in to @Examplium.Shared.Constants.ExampliumCoreConstants.ApplicationName
+        </div>
+    </div>
+    <div class="row">
+        <a asp-page="/Account/Login/Index" asp-route-returnUrl="@Model.View.ReturnUrl">Go to login</a>
+    </div>
+</div>
