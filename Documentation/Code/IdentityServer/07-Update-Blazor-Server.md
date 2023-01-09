@@ -70,6 +70,14 @@ app.UseAuthorization();
 app.MapBffManagementEndpoints();
 ```
 
+Replace the line `app.MapControllers();` with this:
+```
+app.MapControllers()
+    .RequireAuthorization()
+    .AsBffApiEndpoint();
+
+```
+
 <br/>
 
 ### Add API secret to Examplium.Server user secrets.
