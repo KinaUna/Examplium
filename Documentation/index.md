@@ -14,6 +14,7 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 
 ### [Code](Code/Index.md)
 - [Getting Started](Code/Getting-Started.md)
+- [Identity Server](Code/IdentityServer/Index.md)
 
 ### [Business](Business/Index.md)
 - [Startup](Business/Startup/Index.md)
