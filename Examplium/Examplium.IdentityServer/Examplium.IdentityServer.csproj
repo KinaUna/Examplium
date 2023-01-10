@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examplium\Shared\Examplium.Shared.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\Shared\Examplium.Shared.csproj" />
   </ItemGroup>
 
 </Project>
