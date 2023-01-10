@@ -34,7 +34,7 @@ More documentation for Duende Identity Server can be found here: https://docs.du
 
 <br/>
 
-### Constants
+## Constants
 
 If it doesn't exist, in the Examplium.Shared project add a new folder named "Constants".
 
