@@ -154,4 +154,8 @@ Removed unused code from the initial Visual Studio solution template.
 
 <br>
 
+### Code update
 
+Added IdentityServer. See: [Identity Server setup and configuration](/Documentation/Code/IdentityServer/Index.md)
+
+<br/>
