@@ -2,6 +2,7 @@
 using Duende.IdentityServer.EntityFramework.Entities;
 using Duende.IdentityServer.EntityFramework.Mappers;
 using Examplium.IdentityServer.Data;
+using Examplium.Shared.Constants;
 using Examplium.Shared.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,10 @@ namespace Examplium.IdentityServer.Services
             AddDefaultIdentityResources();
 
             AddDefaultApiScopes();
+
+            AddDefaultRoles();
+
+            AddDefaultAdminUser();
         }
 
         private void MigrateDatabases()
@@ -124,6 +129,37 @@ namespace Examplium.IdentityServer.Services
             _configurationDbContext.SaveChanges();
 
             AddDefaultApiScopes();
+        }
+
+        private void AddDefaultRoles()
+        {
+            if (_roleManager.FindByNameAsync(ExampliumAuthServerConstants.AdminRole).Result == null)
+            {
+                _roleManager.CreateAsync(new IdentityRole(ExampliumAuthServerConstants.AdminRole)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(ExampliumAuthServerConstants.DefaultRole)).GetAwaiter().GetResult();
+            }
+        }
+
+        private void AddDefaultAdminUser()
+        {
+            var emailString = _configuration["AdminEmail"] ?? throw new InvalidOperationException("Configuration string 'AdminEmail' not found.");
+
+            if(_userManager.FindByEmailAsync(emailString).GetAwaiter().GetResult() == null)
+            {
+                var passwordString = _configuration["AdminInitialPassword"] ?? throw new InvalidOperationException("Configuration string 'AdminInitialPassword' not found.");
+
+                ApplicationUser adminUser = new ApplicationUser()
+                {
+                    Email = emailString,
+                    UserName = emailString,
+                    EmailConfirmed = true
+                };
+
+                _userManager.CreateAsync(adminUser, passwordString).GetAwaiter().GetResult();
+
+                _userManager.AddToRoleAsync(adminUser, ExampliumAuthServerConstants.AdminRole).GetAwaiter().GetResult();
+            }
+            
         }
     }
 }
