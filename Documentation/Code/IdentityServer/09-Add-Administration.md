@@ -270,12 +270,16 @@ Put this code in the file:
 }
 <div class="login-page">
     <div class="lead">
-        <h1>Administration</h1>
+        <h3>Administration</h3>
     </div>
     
     <div class="row">
-        <div><a asp-page="/Admin/ManageUsers/">Manage users</a></div>
-        <div><a asp-page="/Admin/ResetConfiguration/">Reset configuration</a></div>
+        <div class="mt-2 mb-2">
+            <a asp-page="/Admin/ManageUsers/Index">Manage users</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <a asp-page="/Admin/ResetConfiguration/Index">Reset configuration</a>
+        </div>
 
     </div>
 </div>
@@ -304,9 +308,349 @@ namespace Examplium.IdentityServer.Pages.Admin
 
 ### Add Manage Users page
 
+Add a new folder in the Admin folder, name it "ManageUsers".
+
+Add a new class in this folder, name it "ManageUsersViewModel.cs" and update the code:
+```
+using Examplium.Shared.Models.Identity;
+
+namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
+{
+    public class ManageUsersViewModel
+    {
+        public IList<ApplicationUser> Administrators { get; set; } = new List<ApplicationUser>();
+    }
+}
+```
+
+Add another class, name it "ManageUsersInputModel.cs" with this content:
+```
+namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
+{
+    public class ManageUsersInputModel
+    {
+        public string RemoveAdminRoleId { get; set; } = string.Empty;
+        public string RemoveAdminRoleEmail { get; set; } = string.Empty;
+        public string AddAdminRoleEmail { get; set; } = string.Empty;
+        public string ErrorMessage { get; set; } = string.Empty;
+    }
+}
+```
+
+Add a new blank razor page with the name "Index.cshtml".
+Code:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.IndexModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users</h3>
+    </div>
+
+    <div class="row">
+        <div class="mt-2 mb-2">
+            <h5>Administrators</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var applicationUser in Model.View.Administrators)
+                {
+                    <tr>
+                        <td>@applicationUser.Email</td>
+                        <td>
+                            <a asp-page="/Admin/ManageUsers/RemoveAdminRoleFromUser" asp-route-userId="@applicationUser.Id">Remove administrator role</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Add administrator</h5>
+            <div class="card">
+
+                <div class="card-header">
+                    Add admin role to a user
+                </div>
+                <div class="card-body">
+                    <a asp-page="/Admin/ManageUsers/AddAdminRoleToUser">Add administrator role</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-2 mb-2">
+            <a asp-page="/Admin/Index">Return to administration</a>
+        </div>
+
+    </div>
+</div>
+```
+
+Update the code behind content to this:
+
+```
+using Examplium.Shared.Constants;
+using Examplium.Shared.Models.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class IndexModel : PageModel
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+        
+        public IndexModel(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [BindProperty] public ManageUsersViewModel View { get; set; } = new ManageUsersViewModel();
+        
+        public async Task<IActionResult> OnGet()
+        {
+            View.Administrators = await _userManager.GetUsersInRoleAsync(ExampliumAuthServerConstants.AdminRole);
+
+            return Page();
+
+        }
+    }
+```
+
+Add another blank razor page with the name "AddAdminRoleToUser.cshtml", update the content to this:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.AddAdminRoleToUserModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users - Add admin role to user</h3>
+    </div>
+    @if (string.IsNullOrEmpty(Model.Input.ErrorMessage))
+    {
+        <div class="row">
+            <div class="card m-0 p-0">
+                <div class="card-header">
+                    <h5>Enter the email address of the user</h5>
+                </div>
+                <div class="card-body p-5">
+                    <form asp-page="/Admin/ManageUsers/AddAdminRoleToUser">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email" asp-for="Input.AddAdminRoleEmail"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Add administrator role</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="mt-2 mb-2">
+                        <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <a asp-page="/Admin/Index">Return to administration page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="mt-2 mb-2">
+                <h4>@Model.Input.ErrorMessage</h4>
+            </div>
+            <div class="mt-2 mb-2">
+                <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+            </div>
+            <div class="mt-2 mb-2">
+                <a asp-page="/Admin/Index">Return to administration page</a>
+            </div>
+        </div>
+    }
+    
+</div>
+```
+
+Replace the content of the code behind file, "AddAdminRoleToUser.cshtml.cs" with this:
+```
+using Examplium.Shared.Constants;
+using Examplium.Shared.Models.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class AddAdminRoleToUserModel : PageModel
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public AddAdminRoleToUserModel(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [BindProperty] public ManageUsersInputModel Input { get; set; } = new ManageUsersInputModel();
+
+        public void OnGet()
+        {
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            Console.WriteLine("Input.AddAdminRoleEmail: " + Input.AddAdminRoleEmail);
+            if (!string.IsNullOrEmpty(Input.AddAdminRoleEmail))
+            {
+                ApplicationUser? user = await _userManager.FindByEmailAsync(Input.AddAdminRoleEmail);
+                if (user != null)
+                {
+                    await _userManager.AddToRoleAsync(user, ExampliumAuthServerConstants.AdminRole);
+                    return RedirectToPage("/Admin/ManageUsers/Index");
+                }
+            }
+
+            Input.ErrorMessage = "Error: User not found.";
+            return Page();
+        }
+    }
+}
+```
+
+Add a blank razor page again, name it "RemoveAdminRoleFromUser.cshtml", and replace the file content with this:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.RemoveAdminRoleFromUserModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users - Remove admin role from user</h3>
+    </div>
+
+    <div class="row">
+        @if (string.IsNullOrEmpty(Model.Input.ErrorMessage))
+        {
+            <div class="row">
+                <div class="card m-0 p-0">
+                    <div class="card-header">
+                        <h5>Remove Admin role from this user?</h5>
+                    </div>
+                    <div class="card-body p-5">
+                        <form asp-page="/Admin/ManageUsers/RemoveAdminRoleFromUser">
+                            <input type="hidden" asp-for="Input.RemoveAdminRoleEmail"/>
+                            <input type="hidden" asp-for="Input.RemoveAdminRoleId"/>
+                            <div class="form-group">
+                                <h5>Email: @Model.Input.RemoveAdminRoleEmail</h5>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Yes - Remove administrator role</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mt-2 mb-2">
+                            <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                        </div>
+                        <div class="mt-2 mb-2">
+                            <a asp-page="/Admin/Index">Return to administration page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="mt-2 mb-2">
+                    <h4>@Model.Input.ErrorMessage</h4>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+```
+
+Then replace the code behind file content with the following:
+```
+using Duende.IdentityServer.Extensions;
+using Examplium.Shared.Constants;
+using Examplium.Shared.Models.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class RemoveAdminRoleFromUserModel : PageModel
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public RemoveAdminRoleFromUserModel(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [BindProperty] public ManageUsersInputModel Input { get; set; } = new ManageUsersInputModel();
+
+        public async Task<IActionResult> OnGet(string userId)
+        {
+            if (!string.IsNullOrEmpty(userId))
+            {
+                ApplicationUser? user = await _userManager.FindByIdAsync(userId);
+            
+                if (user != null && !string.IsNullOrEmpty(user.Email)) 
+                {
+                    if (User.Identity.GetSubjectId() == userId)
+                    {
+                        Input.ErrorMessage = "Error: You cannot remove the admin role from your own account.";
+                    }
+                    Input.RemoveAdminRoleId = userId; 
+                    Input.RemoveAdminRoleEmail = user.Email;
+                }
+            }
+            
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (!string.IsNullOrEmpty(Input.RemoveAdminRoleId))
+            {
+                ApplicationUser? user = await _userManager.FindByIdAsync(Input.RemoveAdminRoleId);
+                if (user != null && string.Equals(user.Email, Input.RemoveAdminRoleEmail, StringComparison.OrdinalIgnoreCase))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, ExampliumAuthServerConstants.AdminRole);
+                    return RedirectToPage("/Admin/ManageUsers/Index");
+                }
+            }
+
+            Input.ErrorMessage = "Error: User not found.";
+            return Page();
+        }
+    }
+}
+```
 <br/>
 
 ### Add Reset Configuration page
 
 <br/>
-
