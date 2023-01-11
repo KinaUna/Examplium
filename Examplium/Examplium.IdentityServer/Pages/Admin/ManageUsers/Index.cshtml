@@ -1,0 +1,52 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.IndexModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users</h3>
+    </div>
+
+    <div class="row">
+        <div class="mt-2 mb-2">
+            <h5>Administrators</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var applicationUser in Model.View.Administrators)
+                {
+                    <tr>
+                        <td>@applicationUser.Email</td>
+                        <td>
+                            <a asp-page="/Admin/ManageUsers/RemoveAdminRoleFromUser" asp-route-userId="@applicationUser.Id">Remove administrator role</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Add administrator</h5>
+            <div class="card">
+
+                <div class="card-header">
+                    Add admin role to a user
+                </div>
+                <div class="card-body">
+                    <a asp-page="/Admin/ManageUsers/AddAdminRoleToUser">Add administrator role</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-2 mb-2">
+            <a asp-page="/Admin/Index">Return to administration</a>
+        </div>
+
+    </div>
+</div>

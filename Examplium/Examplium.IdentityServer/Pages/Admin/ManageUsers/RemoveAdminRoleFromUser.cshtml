@@ -1,0 +1,54 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.RemoveAdminRoleFromUserModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users - Remove admin role from user</h3>
+    </div>
+
+    <div class="row">
+        @if (string.IsNullOrEmpty(Model.Input.ErrorMessage))
+        {
+            <div class="row">
+                <div class="card m-0 p-0">
+                    <div class="card-header">
+                        <h5>Remove Admin role from this user?</h5>
+                    </div>
+                    <div class="card-body p-5">
+                        <form asp-page="/Admin/ManageUsers/RemoveAdminRoleFromUser">
+                            <input type="hidden" asp-for="Input.RemoveAdminRoleEmail"/>
+                            <input type="hidden" asp-for="Input.RemoveAdminRoleId"/>
+                            <div class="form-group">
+                                <h5>Email: @Model.Input.RemoveAdminRoleEmail</h5>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Yes - Remove administrator role</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mt-2 mb-2">
+                            <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                        </div>
+                        <div class="mt-2 mb-2">
+                            <a asp-page="/Admin/Index">Return to administration page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="mt-2 mb-2">
+                    <h4>@Model.Input.ErrorMessage</h4>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
