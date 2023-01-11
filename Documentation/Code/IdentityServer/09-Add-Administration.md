@@ -992,3 +992,19 @@ namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
 }
 ```
 <br/>
+
+### Update \_Layout.cshtml with link to Admin/Index page
+
+Open Examplium.IdentityServer/Pages/Shared/\_Layout.cshtml
+
+Just above the last `</ul>` closing tag add the following code:
+```
+@if (User.IsInRole(ExampliumAuthServerConstants.AdminRole))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Index">Administration</a>
+    </li>
+}
+```
+
+<br/>
