@@ -5,5 +5,7 @@
         public const string WebServerUrlDebug = "https://localhost:7128";
         public const string IdentityServerUrlDebug = "https://localhost:7169";
         public const string CoreApiName = "Examplium.CoreApi";
+        public const string DefaultRole = "Default";
+        public const string AdminRole = "Admin";
     }
 }

@@ -1,0 +1,38 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.IndexModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Configuration</h3>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Reset))
+    {
+        <div class="bg-danger m-3 p-3 text-white">
+            @Model.Reset have been reset.
+        </div>
+    }
+    <div class="row">
+        <div class="mt-2 mb-2">
+            <h5>Clients</h5>
+            <a asp-page="/Admin/ResetConfiguration/Clients">Reset clients</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Identity Resources</h5>
+            <a asp-page="/Admin/ResetConfiguration/IdentityResources">Reset identity resources</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Api Scopes</h5>
+            <a asp-page="/Admin/ResetConfiguration/ApiScopes">Reset api scopes</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>All configuration settings</h5>
+            <a asp-page="/Admin/ResetConfiguration/All">Reset all</a>
+        </div>
+
+        <div class="mt-5 mb-2">
+            <a asp-page="/Admin/Index">Return to administration</a>
+        </div>
+
+    </div>
+</div>

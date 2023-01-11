@@ -39,7 +39,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Account/DeleteAccount/Index" asp-route-returnUrl="@returnUrl">Delete My Account</a>
                             </li>
                         }
-                        
+                        @if (User.IsInRole(ExampliumAuthServerConstants.AdminRole))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Index">Administration</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

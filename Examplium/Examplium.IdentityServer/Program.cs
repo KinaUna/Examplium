@@ -26,8 +26,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddDistributedMemoryCache();
 
-var coreApiSecretString = builder.Configuration["CoreApiSecret"] ?? throw new InvalidOperationException("Configuration string 'CoreApiSecret' not found.");
-
 builder.Services.AddIdentityServer(options =>
     {
         options.Events.RaiseErrorEvents = true;
@@ -65,10 +63,11 @@ builder.Services.AddAuthentication();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
 
 var app = builder.Build();
 
-IdentityServerInitialization.InitializeDatabase(app, coreApiSecretString);
+IdentityServerInitialization.InitializeDatabase(app);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

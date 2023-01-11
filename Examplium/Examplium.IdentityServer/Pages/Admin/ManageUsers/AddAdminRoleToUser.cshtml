@@ -1,0 +1,50 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Admin.ManageUsers.AddAdminRoleToUserModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Manage Users - Add admin role to user</h3>
+    </div>
+    @if (string.IsNullOrEmpty(Model.Input.ErrorMessage))
+    {
+        <div class="row">
+            <div class="card m-0 p-0">
+                <div class="card-header">
+                    <h5>Enter the email address of the user</h5>
+                </div>
+                <div class="card-body p-5">
+                    <form asp-page="/Admin/ManageUsers/AddAdminRoleToUser">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email" asp-for="Input.AddAdminRoleEmail"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Add administrator role</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="mt-2 mb-2">
+                        <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <a asp-page="/Admin/Index">Return to administration page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="mt-2 mb-2">
+                <h4>@Model.Input.ErrorMessage</h4>
+            </div>
+            <div class="mt-2 mb-2">
+                <a asp-page="/Admin/ManageUsers/Index">Return to manager users page</a>
+            </div>
+            <div class="mt-2 mb-2">
+                <a asp-page="/Admin/Index">Return to administration page</a>
+            </div>
+        </div>
+    }
+    
+</div>
