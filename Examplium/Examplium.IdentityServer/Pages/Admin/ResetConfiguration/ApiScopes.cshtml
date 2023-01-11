@@ -1,0 +1,30 @@
+﻿@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.ApiScopesModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Api Scopes</h3>
+    </div>
+
+    <div class="row">
+        <div class="card m-0 p-0">
+            <div class="card-header">
+                <h5>Are you sure you want to reset api scopes?</h5>
+            </div>
+            <div class="card-body p-5">
+                <form asp-page="/Admin/ResetConfiguration/ApiScopes">
+                    <button type="submit" class="btn btn-primary mt-2">Reset api scopes</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ResetConfiguration/Index">Return to reset configuration page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

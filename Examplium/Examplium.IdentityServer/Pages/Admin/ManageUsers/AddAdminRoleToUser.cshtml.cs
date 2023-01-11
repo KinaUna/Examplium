@@ -25,7 +25,6 @@ namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
 
         public async Task<IActionResult> OnPost()
         {
-            Console.WriteLine("Input.AddAdminRoleEmail: " + Input.AddAdminRoleEmail);
             if (!string.IsNullOrEmpty(Input.AddAdminRoleEmail))
             {
                 ApplicationUser? user = await _userManager.FindByEmailAsync(Input.AddAdminRoleEmail);
