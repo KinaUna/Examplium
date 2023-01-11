@@ -85,5 +85,16 @@ If you intend to use it for commercial solutions have a look at the Community Ed
 
 <br/>
 
+### [09 Add Administration Features](/Documentation/Code/IdentityServer/09-Add-Administration.md)
+- Initial administrator account
+- Refactor IdentityServerInitialization.cs
+- Update Program.cs
+- Add Admin Index page
+- Add Manage Users page
+- Add Reset Configuration page
+- Add link to admin index page
+
+<br/>
+
 ## References
 Official Duende Identity Server documentation: [Duende Identity Server - Overview](https://docs.duendesoftware.com/identityserver/v6/overview/)
