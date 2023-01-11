@@ -511,7 +511,6 @@ namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
 
         public async Task<IActionResult> OnPost()
         {
-            Console.WriteLine("Input.AddAdminRoleEmail: " + Input.AddAdminRoleEmail);
             if (!string.IsNullOrEmpty(Input.AddAdminRoleEmail))
             {
                 ApplicationUser? user = await _userManager.FindByEmailAsync(Input.AddAdminRoleEmail);
@@ -653,4 +652,343 @@ namespace Examplium.IdentityServer.Pages.Admin.ManageUsers
 
 ### Add Reset Configuration page
 
+Add a new folder in Examplium.IdentityServer/Pages/Admin/, name it "ResetConfiguration".
+
+Add an empty razor page with the name "Index.cshtml".
+
+Update the content with this:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.IndexModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Configuration</h3>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Reset))
+    {
+        <div class="bg-danger m-3 p-3 text-white">
+            @Model.Reset have been reset.
+        </div>
+    }
+    <div class="row">
+        <div class="mt-2 mb-2">
+            <h5>Clients</h5>
+            <a asp-page="/Admin/ResetConfiguration/Clients">Reset clients</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Identity Resources</h5>
+            <a asp-page="/Admin/ResetConfiguration/IdentityResources">Reset identity resources</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>Api Scopes</h5>
+            <a asp-page="/Admin/ResetConfiguration/ApiScopes">Reset api scopes</a>
+        </div>
+        <div class="mt-2 mb-2">
+            <h5>All configuration settings</h5>
+            <a asp-page="/Admin/ResetConfiguration/All">Reset all</a>
+        </div>
+
+        <div class="mt-2 mb-2">
+            <a asp-page="/Admin/Index">Return to administration</a>
+        </div>
+
+    </div>
+</div>
+```
+
+Replace the content of the code behind file with this:
+```
+using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class IndexModel : PageModel
+    {
+        [BindProperty] public string Reset { get; set; } = string.Empty;
+        public void OnGet(string? reset)
+        {
+            Reset = reset ?? string.Empty;
+        }
+    }
+}
+```
+
+Add a new empty razor page with the name "Clients.cshtml", update the code:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.ClientsModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Clients</h3>
+    </div>
+
+    <div class="row">
+        <div class="card m-0 p-0">
+            <div class="card-header">
+                <h5>Are you sure you want to reset clients?</h5>
+            </div>
+            <div class="card-body p-5">
+                <form asp-page="/Admin/ResetConfiguration/Clients">
+                    <button type="submit" class="btn btn-primary mt-2">Reset clients</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ResetConfiguration/Index">Return to reset configuration page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Replace the content of the code behind file Clients.cshtml.cs with this:
+```
+using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Examplium.IdentityServer.Services;
+
+namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class ClientsModel : PageModel
+    {
+        private readonly IDatabaseInitializer _databaseInitializer;
+
+        public ClientsModel(IDatabaseInitializer databaseInitializer)
+        {
+            _databaseInitializer = databaseInitializer;
+        }
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
+        {
+            _databaseInitializer.ResetClients();
+
+            return RedirectToPage("/Admin/ResetConfiguration/Index", new {reset = "Clients"});
+        }
+    }
+}
+```
+
+Add a new empty razor page with the name "IdentityResources.cshtml", update the code:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.IdentityResourcesModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Identity Resources</h3>
+    </div>
+
+    <div class="row">
+        <div class="card m-0 p-0">
+            <div class="card-header">
+                <h5>Are you sure you want to reset identity resources?</h5>
+            </div>
+            <div class="card-body p-5">
+                <form asp-page="/Admin/ResetConfiguration/IdentityResources">
+                    <button type="submit" class="btn btn-primary mt-2">Reset identity resources</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ResetConfiguration/Index">Return to reset configuration page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Replace the content of the code behind file with this:
+```
+using Examplium.IdentityServer.Services;
+using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class IdentityResourcesModel : PageModel
+    {
+        private readonly IDatabaseInitializer _databaseInitializer;
+
+        public IdentityResourcesModel(IDatabaseInitializer databaseInitializer)
+        {
+            _databaseInitializer = databaseInitializer;
+        }
+
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
+        {
+            _databaseInitializer.ResetIdentityResources();
+
+            return RedirectToPage("/Admin/ResetConfiguration/Index", new { reset = "Identity Resources" });
+        }
+    }
+}
+```
+
+Add a new empty razor page with the name "ApiScopes.cshtml", update the code:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.ApiScopesModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset Identity Server Api Scopes</h3>
+    </div>
+
+    <div class="row">
+        <div class="card m-0 p-0">
+            <div class="card-header">
+                <h5>Are you sure you want to reset api scopes?</h5>
+            </div>
+            <div class="card-body p-5">
+                <form asp-page="/Admin/ResetConfiguration/ApiScopes">
+                    <button type="submit" class="btn btn-primary mt-2">Reset api scopes</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ResetConfiguration/Index">Return to reset configuration page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Replace the content of the code behind file with this:
+```
+using Examplium.IdentityServer.Services;
+using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class ApiScopesModel : PageModel
+    {
+        private readonly IDatabaseInitializer _databaseInitializer;
+
+        public ApiScopesModel(IDatabaseInitializer databaseInitializer)
+        {
+            _databaseInitializer = databaseInitializer;
+        }
+
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
+        {
+            _databaseInitializer.ResetApiScopes();
+
+            return RedirectToPage("/Admin/ResetConfiguration/Index", new { reset = "Api Scopes" });
+        }
+    }
+}
+```
+
+Add a new empty razor page with the name "All.cshtml", update the code:
+```
+@page
+@model Examplium.IdentityServer.Pages.Admin.ResetConfiguration.AllModel
+@{
+}
+<div class="login-page">
+    <div class="lead">
+        <h3>Reset All Identity Server Configurations </h3>
+    </div>
+
+    <div class="row">
+        <div class="card m-0 p-0">
+            <div class="card-header">
+                <h5>Are you sure you want to reset all configurations?</h5>
+            </div>
+            <div class="card-body p-5">
+                <form asp-page="/Admin/ResetConfiguration/All">
+                    <button type="submit" class="btn btn-primary mt-2">Reset all</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/ResetConfiguration/Index">Return to reset configuration page</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <a asp-page="/Admin/Index">Return to administration page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Replace the content of the code behind file with this:
+```
+using Examplium.IdentityServer.Services;
+using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Examplium.IdentityServer.Pages.Admin.ResetConfiguration
+{
+    [Authorize(Roles = ExampliumAuthServerConstants.AdminRole)]
+    public class AllModel : PageModel
+    {
+        private readonly IDatabaseInitializer _databaseInitializer;
+
+        public AllModel(IDatabaseInitializer databaseInitializer)
+        {
+            _databaseInitializer = databaseInitializer;
+        }
+
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
+        {
+            _databaseInitializer.ResetClients();
+            _databaseInitializer.ResetIdentityResources();
+            _databaseInitializer.ResetApiScopes();
+
+            return RedirectToPage("/Admin/ResetConfiguration/Index", new { reset = "All configurations" });
+        }
+    }
+}
+```
 <br/>
