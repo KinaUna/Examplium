@@ -63,6 +63,8 @@ Update the values for
 
 ## Apply database migrations
 
+Delete all the in the the Migrations folders in the Examplium.IdentityServer and Examplium.Server.
+
 In the Package Manager Console run these commands:
 
 ```
@@ -86,6 +88,14 @@ add-migration InitialIdentityServerConfigurationDbMigration -Project Examplium.I
 
 ```
 update-database -Project Examplium.IdentityServer -Context ConfigurationDbContext
+```
+
+```
+add-migration InitialServerMigration -Project Examplium.Server -Context ApplicationDbContext
+```
+
+```
+update-database -Project Examplium.Server -Context ApplicationDbContext
 ```
 
 <br/>
