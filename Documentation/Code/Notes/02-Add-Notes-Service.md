@@ -1,5 +1,9 @@
 # Add Notes Service
 
+This service depends on the ServiceResponse class, if it hasn't been created yet, see: https://github.com/KinaUna/Examplium/blob/master/Documentation/Code/Common/01-ServiceResponse.md
+
+<br/>
+
 ### Add folders
 
 In the Examplium.Server root add a new folder named "Services".
@@ -13,15 +17,16 @@ In the Services folder add a folder with the name "Notes".
 In the Notes folder add a new interface file with the name "INotesService.cs" and replace the content with this:
 ```
 using Examplium.Shared.Models.Domain;
+using Examplium.Shared.Models.Services;
 
 namespace Examplium.Server.Services.Notes
 {
     public interface INotesService
     {
-        Task<Note?> CreateNote(Note note);
-        Task<Note?> UpdateNote(Note note);
-        Task<Note?> DeleteNote(Note note);
-        Task<Note?> GetNoteById(int id);
+        Task<ServiceResponse<Note>> CreateNote(Note note);
+        Task<ServiceResponse<Note>> UpdateNote(Note note);
+        Task<ServiceResponse<Note>> DeleteNote(Note note);
+        Task<ServiceResponse<Note>> GetNoteById(int id);
     }
 }
 ```
@@ -34,6 +39,7 @@ In the Notes folder add a new class file with the name "NotesService.cs" and rep
 using Examplium.Server.Data;
 using Examplium.Server.Services.Auth;
 using Examplium.Shared.Models.Domain;
+using Examplium.Shared.Models.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Examplium.Server.Services.Notes
@@ -49,8 +55,9 @@ namespace Examplium.Server.Services.Notes
             _authService = authService;
         }
 
-        public async Task<Note?> CreateNote(Note note)
+        public async Task<ServiceResponse<Note>> CreateNote(Note note)
         {
+            ServiceResponse<Note> response = new ServiceResponse<Note>();
             string? userId = _authService.GetUserId();
             if (userId != null)
             {
@@ -58,14 +65,20 @@ namespace Examplium.Server.Services.Notes
                 _ = await _context.Notes.AddAsync(note);
                 _ = await _context.SaveChangesAsync();
 
-                return note;
+                response.Data = note;
             }
-
-            return null;
+            else
+            {
+                response.Success = false;
+                response.Message = "Invalid user data.";
+            }
+            
+            return response;
         }
 
-        public async Task<Note?> UpdateNote(Note note)
+        public async Task<ServiceResponse<Note>> UpdateNote(Note note)
         {
+            ServiceResponse<Note> response = new ServiceResponse<Note>();
             Note? noteToUpdate = await _context.Notes.SingleOrDefaultAsync(n => n.Id == note.Id);
 
             if (noteToUpdate != null && noteToUpdate.Author == _authService.GetUserId())
@@ -79,35 +92,67 @@ namespace Examplium.Server.Services.Notes
                 _ = _context.Notes.Update(noteToUpdate);
                 _ = await _context.SaveChangesAsync();
 
-                return noteToUpdate;
+                response.Data = noteToUpdate;
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Invalid user data.";
+
+                if (noteToUpdate == null)
+                {
+                    response.Message = "Invalid Note Id.";
+                }
             }
 
-            return null;
+            return response;
         }
 
-        public async Task<Note?> DeleteNote(Note note)
+        public async Task<ServiceResponse<Note>> DeleteNote(Note note)
         {
+            ServiceResponse<Note> response = new ServiceResponse<Note>();
             Note? noteToDelete = await _context.Notes.SingleOrDefaultAsync(n => n.Id == note.Id);
+            
             if (noteToDelete != null && note.Author == _authService.GetUserId())
             {
                 _context.Notes.Remove(noteToDelete);
                 _ = await _context.SaveChangesAsync();
-                return noteToDelete;
-            }
 
-            return null;
+                response.Data = noteToDelete;
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Invalid user data.";
+
+                if (noteToDelete == null)
+                {
+                    response.Message = "Invalid Note Id.";
+                }
+            }
+            return response;
 
         }
 
-        public async Task<Note?> GetNoteById(int id)
+        public async Task<ServiceResponse<Note>> GetNoteById(int id)
         {
+            ServiceResponse<Note> response = new ServiceResponse<Note>();
+
             Note? noteResult = await _context.Notes.SingleOrDefaultAsync(n => n.Id == id);
 
-            return noteResult;
+            if (noteResult != null)
+            {
+                response.Data = noteResult;
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Invalid Note Id.";
+            }
+            return response;
         }
     }
 }
-```
 <br/>
 
 ### Register NotesService for dependency injection
