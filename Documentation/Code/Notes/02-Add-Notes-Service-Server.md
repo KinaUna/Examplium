@@ -1,4 +1,4 @@
-# Add Notes Service
+# Add Notes Service on Examplium.Server
 
 This service depends on the ServiceResponse class, if it hasn't been created yet, see: https://github.com/KinaUna/Examplium/blob/master/Documentation/Code/Common/01-ServiceResponse.md
 
