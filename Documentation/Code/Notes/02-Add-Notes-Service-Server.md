@@ -29,6 +29,7 @@ namespace Examplium.Server.Services.Notes
         Task<ServiceResponse<Note>> UpdateNote(Note note);
         Task<ServiceResponse<Note>> DeleteNote(Note note);
         Task<ServiceResponse<Note>> GetNoteById(int id);
+        Task<ServiceResponse<List<Note>>> GetMyNotes();
     }
 }
 ```
@@ -142,15 +143,28 @@ namespace Examplium.Server.Services.Notes
 
             Note? noteResult = await _context.Notes.SingleOrDefaultAsync(n => n.Id == id);
 
-            if (noteResult != null)
+            if (noteResult != null && noteResult.Author == _authService.GetUserId())
             {
                 response.Data = noteResult;
             }
             else
             {
                 response.Success = false;
-                response.Message = "Invalid Note Id.";
+                response.Message = "Invalid usser data";
+                if (noteResult == null)
+                {
+                    response.Message = "Invalid Note Id.";
+                }
             }
+            return response;
+        }
+
+        public async Task<ServiceResponse<List<Note>>> GetMyNotes()
+        {
+            ServiceResponse<List<Note>> response = new ServiceResponse<List<Note>>();
+
+            List<Note> myNotes = await _context.Notes.Where(n => n.Author == _authService.GetUserId()).ToListAsync();
+
             return response;
         }
     }
