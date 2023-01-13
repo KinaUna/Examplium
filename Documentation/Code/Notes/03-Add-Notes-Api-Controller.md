@@ -1,6 +1,6 @@
 # Add Notes Api Controller
 
-Note: All the actions in this API use HttpPost even though HttpPut or HttpDelete would normally be used. 
+Note: All the actions receiving data in this API use HttpPost even though HttpPut or HttpDelete would normally be used. 
 This is done to avoid leaking information on the network in the url of the request.
 
 It probably isn't important for most data, but doing it as a principle throughout this application minimizes the risk of revealing personal information in the URL unintentionally.
@@ -52,7 +52,7 @@ namespace Examplium.Server.Controllers
         [HttpPost("DeleteNote")]
         public async Task<ActionResult> DeleteNote(Note note)
         {
-            var updateNoteResponse = await _notesService.UpdateNote(note);
+            var updateNoteResponse = await _notesService.DeleteNote(note);
 
             return Ok(updateNoteResponse);
         }
@@ -63,6 +63,14 @@ namespace Examplium.Server.Controllers
             var getNoteResponse = await _notesService.GetNoteById(id);
 
             return Ok(getNoteResponse);
+        }
+
+        [HttpGet("GetMyNotes")]
+        public async Task<ActionResult> GetMyNotes()
+        {
+            var getMyNotesResponse = await _notesService.GetMyNotes();
+
+            return Ok(getMyNotesResponse);
         }
     }
 }
