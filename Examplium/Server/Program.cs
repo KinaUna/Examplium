@@ -1,4 +1,6 @@
 using Examplium.Server.Data;
+using Examplium.Server.Services.Auth;
+using Examplium.Server.Services.Notes;
 using Examplium.Shared.Constants;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,6 +53,11 @@ builder.Services.AddAuthentication(options =>
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
     });
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<INotesService, NotesService>();
 
 var app = builder.Build();
 

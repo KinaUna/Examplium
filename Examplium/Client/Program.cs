@@ -1,5 +1,6 @@
 using Examplium.Client;
 using Examplium.Client.BFF;
+using Examplium.Client.Services.Notes;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -20,5 +21,7 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, BffAuthenticationStateProvider>();
 
 builder.Services.AddApiAuthorization();
+
+builder.Services.AddScoped<INotesService, NotesService>();
 
 await builder.Build().RunAsync();
