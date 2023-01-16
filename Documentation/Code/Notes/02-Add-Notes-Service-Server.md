@@ -165,6 +165,8 @@ namespace Examplium.Server.Services.Notes
 
             List<Note> myNotes = await _context.Notes.Where(n => n.Author == _authService.GetUserId()).ToListAsync();
 
+            response.Data = myNotes;
+            
             return response;
         }
     }
