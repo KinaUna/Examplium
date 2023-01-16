@@ -143,6 +143,8 @@ namespace Examplium.Client.Services.Notes
         }
     }
 }
+```
+
 <br/>
 
 ### Register NotesService for dependency injection
