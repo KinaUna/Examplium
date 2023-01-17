@@ -86,8 +86,8 @@ namespace Examplium.Server.Services.Notes
 
             if (noteToUpdate != null && noteToUpdate.Author == _authService.GetUserId())
             {
-                noteToUpdate.Title = noteToUpdate.Title;
-                noteToUpdate.Content = noteToUpdate.Content;
+                noteToUpdate.Title = note.Title;
+                noteToUpdate.Content = note.Content;
                 noteToUpdate.Category = note.Category;
                 noteToUpdate.Tags = note.Tags;
                 noteToUpdate.Updated = DateTime.UtcNow;
