@@ -9,21 +9,21 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 
 ## Table of Contents
 
-### [Logs](Logs/Index.md)
-- [Activity Log](Logs/ActivityLog.md)
+### [Logs](/Documentation/Logs/Index.md)
+- [Activity Log](/Documentation/Logs/ActivityLog.md)
 
-### [Code](Code/Index.md)
-- [Getting Started](Code/Getting-Started.md)
+### [Code](/Documentation/Code/Index.md)
+- [Getting Started](/Documentation/Code/Getting-Started.md)
 - [Common](/Documentation/Code/Common/Index.md)
-- [Identity Server](Code/IdentityServer/Index.md)
+- [Identity Server](/Documentation/Code/IdentityServer/Index.md)
 - [Auth](/Documentation/Code/Auth/Index.md)
-- [Notes](Documentation/Code/Notes/Index.md)
+- [Notes](/Documentation/Code/Notes/Index.md)
 
-### [Business](Business/Index.md)
-- [Startup](Business/Startup/Index.md)
+### [Business](/Documentation/Business/Index.md)
+- [Startup](/Documentation/Business/Startup/Index.md)
   
 
-### [Peridium](Peridium/Index.md)
+### [Peridium](/Documentation/Peridium/Index.md)
 
 ### Scion
 All content outside the Peridium directory should be assumed to be Scion content.
