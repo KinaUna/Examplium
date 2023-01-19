@@ -45,8 +45,8 @@ namespace Examplium.Server.Services.Notes
 
             if (noteToUpdate != null && noteToUpdate.Author == _authService.GetUserId())
             {
-                noteToUpdate.Title = noteToUpdate.Title;
-                noteToUpdate.Content = noteToUpdate.Content;
+                noteToUpdate.Title = note.Title;
+                noteToUpdate.Content = note.Content;
                 noteToUpdate.Category = note.Category;
                 noteToUpdate.Tags = note.Tags;
                 noteToUpdate.Updated = DateTime.UtcNow;
@@ -123,6 +123,8 @@ namespace Examplium.Server.Services.Notes
             ServiceResponse<List<Note>> response = new ServiceResponse<List<Note>>();
 
             List<Note> myNotes = await _context.Notes.Where(n => n.Author == _authService.GetUserId()).ToListAsync();
+            
+            response.Data = myNotes;
 
             return response;
         }

@@ -99,3 +99,17 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+.space-20 {
+    height: 20px;
+    display: block;
+}
+
+.space-50 {
+    height: 50px;
+    display: block;
+}
+
+.bg-notes {
+    background: linear-gradient(120deg, #1c8850, #2c9950);
+}
