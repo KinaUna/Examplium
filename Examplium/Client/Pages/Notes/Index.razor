@@ -1,0 +1,94 @@
+﻿@page "/Notes"
+@using Examplium.Client.Shared.Components.Notes
+@using Examplium.Client.Services.Notes
+@using Examplium.Shared.Models.Domain
+@using Microsoft.AspNetCore.Authorization
+@inject INotesService NotesService
+@attribute [Authorize]
+@implements IDisposable
+
+<PageTitle>My Notes</PageTitle>
+@if (!_showAddNoteForm)
+{
+    <button class="btn btn-primary float-end" @onclick="AddNote">Add note</button>
+}
+<h3>My Notes</h3>
+<div class="space-50"></div>
+@if (_showAddNoteForm)
+{
+    <EditForm Model="_editingNote" OnSubmit="SaveNewNote">
+        <div>Add Note</div>
+        <div class="space-20"></div>
+        <div class="row">
+            <label for="titleInput">Title</label>
+            <InputText id="titleInput" class="form-control" @bind-Value="_editingNote.Title" DisplayName="Title"></InputText>
+        </div>
+        <div class="row">
+            <label for="contentInput">Content</label>
+            <InputTextArea id="contentInput" class="form-control" @bind-Value="_editingNote.Content" DisplayName="Content"></InputTextArea>
+        </div>
+        <div class="row">
+            <label for="categoryInput">Category</label>
+            <InputText id="categoryInput" class="form-control" @bind-Value="_editingNote.Category" DisplayName="Category"></InputText>
+        </div>
+        <div class="row">
+            <label for="tagsInput">Tags</label>
+            <InputText id="tagsInput" class="form-control" @bind-Value="_editingNote.Tags" DisplayName="Tags"></InputText>
+        </div>
+        <div class="mt-3 w-100">
+            <div class="float-end">
+                <button class="btn btn-primary" type="submit">Save note</button>
+                <button class="btn btn-secondary" @onclick="CancelAdd">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+    <div class="space-50"></div>
+}
+@if (!_showAddNoteForm && NotesService.MyNotes.Any())
+{
+    foreach (Note note in NotesService.MyNotes)
+    {
+        <div class="space-50"></div>
+        <NoteDetails NoteItem="note"></NoteDetails>
+        
+    }
+}
+
+
+@code 
+{
+    private bool _showAddNoteForm = false;
+
+    private Note _editingNote = new Note();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await NotesService.GetMyNotes();
+        NotesService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        NotesService.OnChange -= StateHasChanged;
+    }
+
+    private void AddNote()
+    {
+        _editingNote = new Note();
+        _showAddNoteForm = true;
+    }
+
+    private async Task SaveNewNote()
+    {
+        if (!string.IsNullOrEmpty(_editingNote.Title))
+        {
+            await NotesService.CreateNote(_editingNote);
+            _showAddNoteForm = false;
+        }
+    }
+
+    private void CancelAdd()
+    {
+        _showAddNoteForm = false;
+    }
+}

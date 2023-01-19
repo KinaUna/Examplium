@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Examplium.Shared.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Examplium.Server.Data
 {
@@ -7,5 +8,7 @@ namespace Examplium.Server.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Note> Notes { get; set; }
     }
 }

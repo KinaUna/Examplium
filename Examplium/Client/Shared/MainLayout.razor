@@ -5,12 +5,12 @@
         <NavMenu/>
     </div>
 
-    <div class="main">
+    <div class="main w-100">
         <div class="top-row px-4">
             <AuthorizeView>
                 <Authorized>
-                    <strong>Hello, @context.User.Identity.Name!</strong>
-                    <a href="@context.User.FindFirst("bff:logout_url")?.Value">Log out</a>
+                    <strong>Hello, @context.User.Identity?.Name!</strong>
+                    <a href="@context.User?.FindFirst("bff:logout_url")?.Value">Log out</a>
                 </Authorized>
                 <NotAuthorized>
                     <a href="bff/login">Log in</a>
@@ -18,7 +18,7 @@
             </AuthorizeView>
         </div>
 
-        <div class="content px-4">
+        <div class="content px-4 container">
             @Body
         </div>
     </div>
