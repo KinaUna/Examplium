@@ -1,4 +1,4 @@
-# Add Notes features
+# Add Notes Entity
 
 ### Add model class
 
