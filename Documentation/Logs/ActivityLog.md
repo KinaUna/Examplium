@@ -159,3 +159,9 @@ Removed unused code from the initial Visual Studio solution template.
 Added IdentityServer. See: [Identity Server setup and configuration](/Documentation/Code/IdentityServer/Index.md)
 
 <br/>
+
+### Code update
+
+Added Notes feature. See: [Notes feature overview](/Documentation/Code/Notes/Index.md)
+
+<br/>
