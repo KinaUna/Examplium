@@ -49,7 +49,7 @@ namespace Examplium.Client.Services.UserInfos
 
         public event Action? OnChange;
 
-        public UserInfo CurrentUser { get; set; }
+        public UserInfo? CurrentUser { get; set; }
 
         public async Task GetCurrentUserInfo()
         {
