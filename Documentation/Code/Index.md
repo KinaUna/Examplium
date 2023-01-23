@@ -26,13 +26,13 @@ Code related to authentication and authorization.
 
 <br/>
 
-## [Notes](Documentation/Code/Notes/Index.md)
+## [Notes](/Documentation/Code/Notes/Index.md)
 
 Code for creating the Notes feature.
 
 <br/>
 
-## [UserInfos](Documentation/Code/UserInfos/Index.md)
+## [UserInfos](/Documentation/Code/UserInfos/Index.md)
 
 Code for creating the User Info/Profile feature.
 
