@@ -309,11 +309,15 @@ Open the Examplium.Client/Shared/NavMenu.razor file.
 
 After the `<div class="nav-item px-3">... </div>` element add this:
 ```
-<div class="nav-item px-3">
-    <NavLink class="nav-link" href="/Notes" Match="NavLinkMatch.All">
-        <span class="oi oi-document" aria-hidden="true"></span> Notes
-    </NavLink>
-</div>
+<AuthorizeView>
+    <Authorized>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Notes" Match="NavLinkMatch.All">
+                <span class="oi oi-document" aria-hidden="true"></span> Notes
+             </NavLink>
+         </div>
+    </Authorized>
+</AuthorizeView>
 ```
 
 <br/>
