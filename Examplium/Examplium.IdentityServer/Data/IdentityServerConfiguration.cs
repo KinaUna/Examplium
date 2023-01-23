@@ -9,7 +9,8 @@ namespace Examplium.IdentityServer.Data
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             {
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Email(),
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -39,6 +40,7 @@ namespace Examplium.IdentityServer.Data
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
                         ExampliumAuthServerConstants.CoreApiName,
                     }
                 }

@@ -40,6 +40,7 @@ namespace Examplium.Server.Services.UserInfos
                 }
 
                 response.Data = userInfo;
+                return response;
             }
 
             response.Success = false;
