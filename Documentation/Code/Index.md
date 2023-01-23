@@ -31,3 +31,9 @@ Code related to authentication and authorization.
 Code for creating the Notes feature.
 
 <br/>
+
+## [Notes](Documentation/Code/UserInfos/Index.md)
+
+Code for creating the User Info/Profile feature.
+
+<br/>
