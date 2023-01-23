@@ -1,5 +1,4 @@
-﻿using Examplium.Server.Services.Notes;
-using Examplium.Server.Services.UserInfos;
+﻿using Examplium.Server.Services.UserInfos;
 using Examplium.Shared.Models.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
