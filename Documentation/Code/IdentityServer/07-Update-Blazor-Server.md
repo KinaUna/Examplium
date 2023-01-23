@@ -50,6 +50,7 @@ builder.Services.AddAuthentication(options =>
 
         options.Scope.Clear();
         options.Scope.Add("openid");
+        options.Scope.Add("email");
         options.Scope.Add(ExampliumAuthServerConstants.CoreApiName);
         options.Scope.Add("offline_access");
 
