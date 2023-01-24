@@ -65,6 +65,8 @@ namespace Examplium.Server.Services.Notes
             if (userId != null)
             {
                 note.Author = userId;
+                note.Created = DateTime.UtcNow;
+                note.Updated = DateTime.UtcNow;
                 _ = await _context.Notes.AddAsync(note);
                 _ = await _context.SaveChangesAsync();
 
@@ -150,7 +152,7 @@ namespace Examplium.Server.Services.Notes
             else
             {
                 response.Success = false;
-                response.Message = "Invalid usser data";
+                response.Message = "Invalid user data";
                 if (noteResult == null)
                 {
                     response.Message = "Invalid Note Id.";
@@ -164,9 +166,9 @@ namespace Examplium.Server.Services.Notes
             ServiceResponse<List<Note>> response = new ServiceResponse<List<Note>>();
 
             List<Note> myNotes = await _context.Notes.Where(n => n.Author == _authService.GetUserId()).ToListAsync();
-
-            response.Data = myNotes;
             
+            response.Data = myNotes;
+
             return response;
         }
     }
