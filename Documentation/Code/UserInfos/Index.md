@@ -22,6 +22,14 @@
 
 <br/>
 
+## [Add time zone functionality for Server](/Documentation/Code/UserInfos/06-Add-Timezone-Server.md)
+
+<br/>
+
+## [Add time zone functionality for client](/Documentation/Code/UserInfos/07-Add-Timezone-Client.md)
+
+<br/>
+
 ## [Next Steps](/Documentation/Code/UserInfos/Next-Steps.md)
 
 <br/>
