@@ -4,7 +4,6 @@
 ### Add language selection. 
 This needs language features implemented first.
 
-### Add Time Zone selection.
 
 ### Add Profile picture upload.
 
