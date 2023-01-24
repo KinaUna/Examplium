@@ -1,9 +1,12 @@
 # Add Timezone functionality on Server.
 
+<br/>
+
 ### Add Data Transfer Object model
 Add a new folder in the Examplium.Shared/Models folder, name it "DTOs".
 
 Add a new class file with the name "TimeZoneDTO.cs.
+
 Code:
 ```
 namespace Examplium.Shared.Models.DTOs
@@ -38,6 +41,7 @@ namespace Examplium.Server.Services.Settings
 ```
 
 Add a class file and name it "TimezonesService.cs".
+
 Code:
 ```
 using Examplium.Shared.Models.Services;
@@ -72,10 +76,12 @@ namespace Examplium.Server.Services.Settings
 ```
 
 Register the service for dependency injection.
+
 Open Examplium.Server/Program.cs, go to the line just above `var app = builder.Build();` and add this:
 ```
 builder.Services.AddScoped<ITimezonesService, TimezonesService>();
 ```
+
 <br/>
 
 ### Add API Controller
@@ -113,3 +119,5 @@ namespace Examplium.Server.Controllers
     }
 }
 ```
+
+<br/>
