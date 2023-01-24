@@ -30,6 +30,10 @@
 
 <br/>
 
+## [Update the Client Notes service](/Documentation/Code/UserInfos/08-Update-Notes-Service.md)
+
+<br/>
+
 ## [Next Steps](/Documentation/Code/UserInfos/Next-Steps.md)
 
 <br/>
