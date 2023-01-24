@@ -24,6 +24,8 @@ namespace Examplium.Server.Services.Notes
             if (userId != null)
             {
                 note.Author = userId;
+                note.Created = DateTime.UtcNow;
+                note.Updated = DateTime.UtcNow;
                 _ = await _context.Notes.AddAsync(note);
                 _ = await _context.SaveChangesAsync();
 
@@ -109,7 +111,7 @@ namespace Examplium.Server.Services.Notes
             else
             {
                 response.Success = false;
-                response.Message = "Invalid usser data";
+                response.Message = "Invalid user data";
                 if (noteResult == null)
                 {
                     response.Message = "Invalid Note Id.";

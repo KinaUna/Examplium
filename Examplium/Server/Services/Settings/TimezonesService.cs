@@ -24,8 +24,6 @@ namespace Examplium.Server.Services.Settings
             };
 
             return response;
-
-
         }
     }
 }
