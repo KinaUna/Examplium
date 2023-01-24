@@ -3,6 +3,7 @@ using Examplium.Server.Services.Auth;
 using Examplium.Shared.Models.Domain;
 using Examplium.Shared.Models.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace Examplium.Server.Services.UserInfos
 {

@@ -113,3 +113,11 @@ a, .btn-link {
 .bg-notes {
     background: linear-gradient(120deg, #1c8850, #2c9950);
 }
+
+.bg-userinfo {
+    background: linear-gradient(120deg, #1c5088, #2c5099);
+}
+
+.bg-userinfo-header {
+    background: linear-gradient(120deg, #1c4077, #2c4088);
+}

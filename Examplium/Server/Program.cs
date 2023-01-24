@@ -1,6 +1,7 @@
 using Examplium.Server.Data;
 using Examplium.Server.Services.Auth;
 using Examplium.Server.Services.Notes;
+using Examplium.Server.Services.Settings;
 using Examplium.Server.Services.UserInfos;
 using Examplium.Shared.Constants;
 using Microsoft.AspNetCore.Authentication;
@@ -62,6 +63,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IUserInfosService, UserInfosService>();
+builder.Services.AddScoped<ITimezonesService, TimezonesService>();
 
 var app = builder.Build();
 

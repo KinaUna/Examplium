@@ -1,6 +1,7 @@
 using Examplium.Client;
 using Examplium.Client.BFF;
 using Examplium.Client.Services.Notes;
+using Examplium.Client.Services.Settings;
 using Examplium.Client.Services.UserInfos;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -25,5 +26,6 @@ builder.Services.AddApiAuthorization();
 
 builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IUserInfosService, UserInfosService>();
+builder.Services.AddScoped<ITimezonesService, TimezonesService>();
 
 await builder.Build().RunAsync();
