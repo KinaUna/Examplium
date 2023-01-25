@@ -10,14 +10,14 @@
 <PageTitle>My Notes</PageTitle>
 @if (!_showAddNoteForm)
 {
-    <button class="btn btn-primary float-end" @onclick="AddNote">Add note</button>
+    <button class="btn btn-primary float-end" @onclick="AddNote"><span class="oi oi-plus" aria-hidden="true"></span> Add note</button>
 }
 <h3>My Notes</h3>
 <div class="space-50"></div>
 @if (_showAddNoteForm)
 {
     <EditForm Model="_editingNote" OnSubmit="SaveNewNote">
-        <div>Add Note</div>
+        <h4>Add Note</h4>
         <div class="space-20"></div>
         <div class="row">
             <label for="titleInput">Title</label>
@@ -37,8 +37,8 @@
         </div>
         <div class="mt-3 w-100">
             <div class="float-end">
-                <button class="btn btn-primary" type="submit">Save note</button>
-                <button class="btn btn-secondary" @onclick="CancelAdd">Cancel</button>
+                <button class="btn btn-success" type="submit"><span class="oi oi-circle-check" aria-hidden="true"></span> Save note</button>
+                <button class="btn btn-secondary" @onclick="CancelAdd"><span class="oi oi-circle-x" aria-hidden="true"></span> Cancel</button>
             </div>
         </div>
     </EditForm>
