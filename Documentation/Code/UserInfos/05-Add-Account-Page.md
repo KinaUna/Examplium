@@ -23,12 +23,11 @@ Add a new Razor component with the name "UserInfoDetails.razor" and replace the 
             </div>
             <div class="card-body">
                 <label class="text-white-50" for="firstNameInput">First name</label>
-                <InputTextArea id="firstNameInput" class="form-control" @bind-Value="UserInfosService.CurrentUser.FirstName" DisplayName="First name"></InputTextArea>
+                <InputText id="firstNameInput" class="form-control mb-3" @bind-Value="UserInfosService.CurrentUser.FirstName" DisplayName="First name"></InputText>
                 <label class="text-white-50" for="middleNameInput">Middle name</label>
-                <InputTextArea id="middleNameInput" class="form-control" @bind-Value="UserInfosService.CurrentUser.MiddleName" DisplayName="Middle name"></InputTextArea>
+                <InputText id="middleNameInput" class="form-control mb-3" @bind-Value="UserInfosService.CurrentUser.MiddleName" DisplayName="Middle name"></InputText>
                 <label class="text-white-50" for="lastNameInput">Last name</label>
-                <InputTextArea id="lastNameInput" class="form-control" @bind-Value="UserInfosService.CurrentUser.LastName" DisplayName="Last name"></InputTextArea>
-            </div>
+                <InputText id="lastNameInput" class="form-control mb-3" @bind-Value="UserInfosService.CurrentUser.LastName" DisplayName="Last name"></InputText>
             <div class="card-footer">
                 <div class="mt-3 w-100">
                     <div class="float-end">
@@ -50,9 +49,18 @@ else
             <h4 class="text-white">@UserInfosService.CurrentUser?.Email</h4>
         </div>
         <div class="card-body text-white">
-            <div>First name: @UserInfosService.CurrentUser?.FirstName</div>
-            <div>Middle name: @UserInfosService.CurrentUser?.MiddleName</div>
-            <div>Last name: @UserInfosService.CurrentUser?.LastName</div>
+            <div class="row mb-3">
+                <div class="col-3 col-lg-2 text-white-50">First name:</div>
+                <div class="col-8"> @UserInfosService.CurrentUser?.FirstName</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-3 col-lg-2 text-white-50">Middle name: </div>
+                <div class="col-8">@UserInfosService.CurrentUser?.MiddleName</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-3 col-lg-2 text-white-50">Last name:</div>
+                <div class="col-8">@UserInfosService.CurrentUser?.LastName</div>
+            </div>
         </div>
     </div>
 }
