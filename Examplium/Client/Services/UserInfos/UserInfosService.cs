@@ -7,7 +7,7 @@ namespace Examplium.Client.Services.UserInfos
     public class UserInfosService: IUserInfosService
     {
         private readonly HttpClient _httpClient;
-
+        
         public UserInfosService(HttpClient httpClient)
         {
             _httpClient = httpClient;

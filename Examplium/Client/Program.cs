@@ -27,5 +27,5 @@ builder.Services.AddApiAuthorization();
 builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IUserInfosService, UserInfosService>();
 builder.Services.AddScoped<ITimezonesService, TimezonesService>();
-
+builder.Services.AddScoped<IUserProfilePictureService, UserProfilePictureService>();
 await builder.Build().RunAsync();

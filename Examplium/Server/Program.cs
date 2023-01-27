@@ -1,5 +1,6 @@
 using Examplium.Server.Data;
 using Examplium.Server.Services.Auth;
+using Examplium.Server.Services.Files;
 using Examplium.Server.Services.Notes;
 using Examplium.Server.Services.Settings;
 using Examplium.Server.Services.UserInfos;
@@ -64,6 +65,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IUserInfosService, UserInfosService>();
 builder.Services.AddScoped<ITimezonesService, TimezonesService>();
+builder.Services.AddScoped<IProfilePictureFileService, ProfilePictureFileService>();
 
 var app = builder.Build();
 
