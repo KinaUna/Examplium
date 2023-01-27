@@ -8,9 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="Uploads\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="Uploads\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Uploads\**" />
+    <None Remove="Models\**" />
+    <None Remove="Uploads\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Duende.BFF" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.1" />
+    <PackageReference Include="TimeZoneConverter" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +44,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

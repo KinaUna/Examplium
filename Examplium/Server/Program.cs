@@ -1,7 +1,11 @@
 using Examplium.Server.Data;
 using Examplium.Server.Services.Auth;
+using Examplium.Server.Services.Files;
 using Examplium.Server.Services.Notes;
+using Examplium.Server.Services.Settings;
+using Examplium.Server.Services.UserInfos;
 using Examplium.Shared.Constants;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,9 +50,10 @@ builder.Services.AddAuthentication(options =>
 
         options.Scope.Clear();
         options.Scope.Add("openid");
+        options.Scope.Add("email");
         options.Scope.Add(ExampliumAuthServerConstants.CoreApiName);
         options.Scope.Add("offline_access");
-
+        
         options.MapInboundClaims = false;
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
@@ -58,6 +63,9 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<INotesService, NotesService>();
+builder.Services.AddScoped<IUserInfosService, UserInfosService>();
+builder.Services.AddScoped<ITimezonesService, TimezonesService>();
+builder.Services.AddScoped<IProfilePictureFileService, ProfilePictureFileService>();
 
 var app = builder.Build();
 

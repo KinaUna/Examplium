@@ -10,5 +10,6 @@ namespace Examplium.Server.Data
         }
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<UserInfo> UserInfos { get; set; }
     }
 }

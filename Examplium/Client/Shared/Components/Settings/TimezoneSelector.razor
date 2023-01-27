@@ -1,0 +1,43 @@
+﻿@using Examplium.Client.Services.Settings
+@using Examplium.Shared.Models.DTOs
+@inject ITimezonesService TimezoneService
+<select class="form-select" @bind="SelectedTimezone">
+    @foreach (var timeZoneItem in _timezonesList)
+    {
+        <option value="@timeZoneItem.Id">@timeZoneItem.Id: @timeZoneItem.DisplayName</option>
+    }
+</select>
+@code {
+    private string _selectedTimezone = "";
+
+    [Parameter]
+    public string? SelectedTimezone { 
+        get => _selectedTimezone;
+        set
+        {
+            if (_selectedTimezone != value && value != null)
+            {
+                _selectedTimezone = value;
+                if (SelectedTimezoneChanged.HasDelegate)
+                {
+                    SelectedTimezoneChanged.InvokeAsync(value);
+                }
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> SelectedTimezoneChanged { get; set; }
+
+    private List<TimeZoneDTO> _timezonesList = new List<TimeZoneDTO>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _timezonesList = await TimezoneService.GetAllTimeZones();
+        if (string.IsNullOrEmpty(SelectedTimezone))
+        {
+            SelectedTimezone = "UTC";
+        }
+    }
+
+}

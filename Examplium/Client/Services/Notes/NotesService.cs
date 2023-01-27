@@ -1,16 +1,20 @@
 ﻿using System.Net.Http.Json;
+using Examplium.Client.Services.UserInfos;
 using Examplium.Shared.Models.Domain;
 using Examplium.Shared.Models.Services;
+using TimeZoneConverter;
 
 namespace Examplium.Client.Services.Notes
 {
     public class NotesService: INotesService
     {
         private readonly HttpClient _httpClient;
+        private readonly IUserInfosService _userInfosService;
 
-        public NotesService(HttpClient httpClient)
+        public NotesService(HttpClient httpClient, IUserInfosService userInfosService)
         {
             _httpClient = httpClient;
+            _userInfosService = userInfosService;
         }
 
         public event Action? OnChange;
@@ -70,12 +74,26 @@ namespace Examplium.Client.Services.Notes
             var response = await _httpClient.PostAsJsonAsync("api/Notes/GetNoteById", id);
             if (response.IsSuccessStatusCode)
             {
-                var deleteNoteResult = await response.Content.ReadFromJsonAsync<ServiceResponse<Note>>();
-                if (deleteNoteResult != null && deleteNoteResult.Success)
+                var getNoteResult = await response.Content.ReadFromJsonAsync<ServiceResponse<Note>>();
+                if (getNoteResult != null && getNoteResult.Success)
                 {
+                    if (_userInfosService.CurrentUser == null)
+                    {
+                        await _userInfosService.GetCurrentUserInfo();
+                    }
+
+                    if (getNoteResult.Data != null && !string.IsNullOrEmpty(_userInfosService.CurrentUser?.TimeZone))
+                    {
+                        TimeZoneInfo timeZoneInfo = TZConvert.GetTimeZoneInfo(_userInfosService.CurrentUser.TimeZone);
+
+                        getNoteResult.Data.Created = TimeZoneInfo.ConvertTimeFromUtc(getNoteResult.Data.Created, timeZoneInfo);
+                        getNoteResult.Data.Updated = TimeZoneInfo.ConvertTimeFromUtc(getNoteResult.Data.Updated, timeZoneInfo);
+                    }
+                    
+
                     await GetMyNotes();
                     OnChange?.Invoke();
-                    return deleteNoteResult.Data;
+                    return getNoteResult.Data;
                 }
             }
 
@@ -92,6 +110,22 @@ namespace Examplium.Client.Services.Notes
                 var getMyNotesList = await response.Content.ReadFromJsonAsync<ServiceResponse<List<Note>>>();
                 if (getMyNotesList != null && getMyNotesList.Success && getMyNotesList.Data != null)
                 {
+                    if (_userInfosService.CurrentUser == null)
+                    {
+                        await _userInfosService.GetCurrentUserInfo();
+                    }
+
+                    if (!string.IsNullOrEmpty(_userInfosService.CurrentUser?.TimeZone))
+                    {
+                        TimeZoneInfo timeZoneInfo = TZConvert.GetTimeZoneInfo(_userInfosService.CurrentUser.TimeZone);
+                        foreach (var note in getMyNotesList.Data)
+                        {
+                            note.Created = TimeZoneInfo.ConvertTimeFromUtc(note.Created, timeZoneInfo);
+                            note.Updated = TimeZoneInfo.ConvertTimeFromUtc(note.Updated, timeZoneInfo);
+                        }
+                    }
+                    
+
                     MyNotes = getMyNotesList.Data;
                 }
                 else
