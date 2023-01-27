@@ -129,8 +129,8 @@ Open the Examplium.Client/Shared/Components/UserInfos/UserInfoDetails.razor file
 After the InputText tage with the "lastNameInput" id add this code:
 ```
 <label class="text-white-50">Timezone</label>
-<div class="form-control">
-    <TimezoneSelector @bind-SelectedTimezone="UserInfosService.CurrentUser.TimeZone"></TimezoneSelector>
+<div class="form-control mb-3">
+   <TimezoneSelector @bind-SelectedTimezone="UserInfosService.CurrentUser.TimeZone"></TimezoneSelector>
 </div>
 ```
 
