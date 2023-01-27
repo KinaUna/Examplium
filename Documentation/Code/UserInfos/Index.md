@@ -34,6 +34,10 @@
 
 <br/>
 
+## [Add Profile Picture](/Documentation/Code/UserInfos/09-Add-Profile-Picture.md)
+
+<br/>
+
 ## [Next Steps](/Documentation/Code/UserInfos/Next-Steps.md)
 
 <br/>
