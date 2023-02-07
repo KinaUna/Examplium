@@ -126,7 +126,7 @@ Code:
 
 Open the Examplium.Client/Shared/Components/UserInfos/UserInfoDetails.razor file.
 
-After the InputText tage with the "lastNameInput" id add this code:
+After the InputText tag with the "lastNameInput" id add this code:
 ```
 <label class="text-white-50">Timezone</label>
 <div class="form-control mb-3">
@@ -135,3 +135,9 @@ After the InputText tage with the "lastNameInput" id add this code:
 ```
 
 <br/>
+
+
+### References:
+
+Cross-platform Time Zones with .NET Core: https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
+
