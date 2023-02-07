@@ -163,3 +163,11 @@ namespace Examplium.Client.Services.Notes
 ```
 
 <br/>
+
+### References:
+
+Cross Platform Time Zones with .NET Core: https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
+
+TimeZoneConverter GitHub repository: https://github.com/mattjohnsonpint/TimeZoneConverter
+
+</br>
