@@ -5,5 +5,5 @@
 This needs language features implemented first.
 
 
-### Add Profile picture upload.
+### Add Profile picture upload preview.
 
