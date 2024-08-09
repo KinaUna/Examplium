@@ -26,13 +26,16 @@ Then you can add your own comments, ideas, complaints to the discussion here: [E
 ### [Peridium](/Documentation/Peridium/Index.md)
 
 ### Scion
-All content outside the Peridium directory should be assumed to be Scion content.
+All content outside the Peridium (the business project) directory should be assumed to be Scion (the product) content.
 
 <br />
 
 #### Other documentation
 
-This will be main entry point for documentation, but it will not be possible to add everything here. So, why here? Because adding the documentation to the code section will keep everything together: When someone clones/forks the repository the documentation will also be copied. This way, it will also have all the benefits of Git, so the documentation will have a complete history of changes, a timeline, and can make use of tags, issues, and so on.
+This will be main entry point for documentation, but it will not be possible to add everything here.
+
+So, why here? Because adding the documentation to the code section will keep everything together: When someone clones/forks the repository the documentation will also be copied. 
+This way, it will also have all the benefits of Git, so the documentation will have a complete history of changes, a timeline, and can make use of tags, issues, and so on.
 
 If you cannot find something you may want to have a look at these other tools/sections:
 
