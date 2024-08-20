@@ -1,0 +1,353 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "",
+    "targetDisplayName": ".NET 8.0"
+  },
+  "analysisStartTime": "2024-08-20T14:55:03.6617927Z",
+  "analysisEndTime": "2024-08-20T14:56:30.4757487Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 4,
+      "issues": 1,
+      "incidents": 16,
+      "effort": 16
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 0,
+        "Optional": 0,
+        "Potential": 16,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 16
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "Examplium\\Client\\Examplium.Client.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 4,
+      "ruleInstances": [
+        {
+          "incidentId": "c7b06d2c-d6ff-4a0c-9b01-4ddf0cad35a1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Client\\Examplium.Client.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Http, 7.0.0\n\nRecommendation:\n\nMicrosoft.Extensions.Http 8.0.0",
+              "protected": "Microsoft.Extensions.Http, 7.0.0\n\nRecommendation:\n\nMicrosoft.Extensions.Http 8.0.0"
+            },
+            "kind": "File",
+            "path": "Examplium\\Client\\Examplium.Client.csproj",
+            "snippet": "Microsoft.Extensions.Http, 7.0.0\n\nRecommendation:\n\nMicrosoft.Extensions.Http 8.0.0",
+            "protectedSnippet": "Microsoft.Extensions.Http, 7.0.0\n\nRecommendation:\n\nMicrosoft.Extensions.Http 8.0.0",
+            "label": "Microsoft.Extensions.Http 7.0.0"
+          }
+        },
+        {
+          "incidentId": "15d72643-8193-44da-9d05-2beffa9a540d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Client\\Examplium.Client.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Components.WebAssembly.Authentication, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Authentication 8.0.8",
+              "protected": "Microsoft.AspNetCore.Components.WebAssembly.Authentication, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Authentication 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Client\\Examplium.Client.csproj",
+            "snippet": "Microsoft.AspNetCore.Components.WebAssembly.Authentication, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Authentication 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Components.WebAssembly.Authentication, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Authentication 8.0.8",
+            "label": "Microsoft.AspNetCore.Components.WebAssembly.Authentication 7.0.1"
+          }
+        },
+        {
+          "incidentId": "af06d640-2f8c-44de-a7e0-bcc9dbfafad4",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Client\\Examplium.Client.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Components.WebAssembly, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly 8.0.8",
+              "protected": "Microsoft.AspNetCore.Components.WebAssembly, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Client\\Examplium.Client.csproj",
+            "snippet": "Microsoft.AspNetCore.Components.WebAssembly, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Components.WebAssembly, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly 8.0.8",
+            "label": "Microsoft.AspNetCore.Components.WebAssembly 7.0.1"
+          }
+        },
+        {
+          "incidentId": "69fe8591-37d5-41d1-afe0-352367e3385b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Client\\Examplium.Client.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Components.WebAssembly.DevServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.DevServer 8.0.8",
+              "protected": "Microsoft.AspNetCore.Components.WebAssembly.DevServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.DevServer 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Client\\Examplium.Client.csproj",
+            "snippet": "Microsoft.AspNetCore.Components.WebAssembly.DevServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.DevServer 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Components.WebAssembly.DevServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.DevServer 8.0.8",
+            "label": "Microsoft.AspNetCore.Components.WebAssembly.DevServer 7.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 4,
+      "ruleInstances": [
+        {
+          "incidentId": "9765f2c8-5778-473f-9749-34c74f44ce6b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore 8.0.8",
+              "protected": "Microsoft.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore 8.0.8",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore 8.0.8",
+            "label": "Microsoft.EntityFrameworkCore 7.0.1"
+          }
+        },
+        {
+          "incidentId": "cca9ce93-2505-48cc-81ae-e7c415b722ae",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+              "protected": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+            "label": "Microsoft.EntityFrameworkCore.SqlServer 7.0.1"
+          }
+        },
+        {
+          "incidentId": "e12d7527-cbd6-4548-b779-16e4aba9060f",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+              "protected": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+            "snippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+            "label": "Microsoft.AspNetCore.Identity.EntityFrameworkCore 7.0.1"
+          }
+        },
+        {
+          "incidentId": "503e6af5-4815-4b04-b4a4-1cecd1b7e843",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Design 8.0.8",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Design 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Examplium.IdentityServer\\Examplium.IdentityServer.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Design 8.0.8",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Design 8.0.8",
+            "label": "Microsoft.EntityFrameworkCore.Design 7.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Examplium\\Server\\Examplium.Server.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 7,
+      "ruleInstances": [
+        {
+          "incidentId": "2c8ca01c-a7df-4f1d-9290-6d755ec928e8",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Components.WebAssembly.Server, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Server 8.0.8",
+              "protected": "Microsoft.AspNetCore.Components.WebAssembly.Server, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Server 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.AspNetCore.Components.WebAssembly.Server, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Server 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Components.WebAssembly.Server, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Components.WebAssembly.Server 8.0.8",
+            "label": "Microsoft.AspNetCore.Components.WebAssembly.Server 7.0.1"
+          }
+        },
+        {
+          "incidentId": "8e6226af-c684-421c-97da-6b309bf51a72",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+              "protected": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.8",
+            "label": "Microsoft.EntityFrameworkCore.SqlServer 7.0.1"
+          }
+        },
+        {
+          "incidentId": "eed97eef-16f4-4d88-8a1f-bc2d55d73e2c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+              "protected": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.EntityFrameworkCore 8.0.8",
+            "label": "Microsoft.AspNetCore.Identity.EntityFrameworkCore 7.0.1"
+          }
+        },
+        {
+          "incidentId": "2d0f814d-d2a5-48d9-93a7-93b155af08fc",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Diagnostics.EntityFrameworkCore 8.0.8",
+              "protected": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Diagnostics.EntityFrameworkCore 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Diagnostics.EntityFrameworkCore 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Diagnostics.EntityFrameworkCore 8.0.8",
+            "label": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 7.0.1"
+          }
+        },
+        {
+          "incidentId": "5c2cb03a-569a-4426-8c1a-b983e8ce2ca7",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Identity.UI, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.UI 8.0.8",
+              "protected": "Microsoft.AspNetCore.Identity.UI, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.UI 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.AspNetCore.Identity.UI, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.UI 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Identity.UI, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Identity.UI 8.0.8",
+            "label": "Microsoft.AspNetCore.Identity.UI 7.0.1"
+          }
+        },
+        {
+          "incidentId": "161b50bb-c6cf-4d40-a748-950d0c3558f1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Authentication.OpenIdConnect, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Authentication.OpenIdConnect 8.0.8",
+              "protected": "Microsoft.AspNetCore.Authentication.OpenIdConnect, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Authentication.OpenIdConnect 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.AspNetCore.Authentication.OpenIdConnect, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Authentication.OpenIdConnect 8.0.8",
+            "protectedSnippet": "Microsoft.AspNetCore.Authentication.OpenIdConnect, 7.0.1\n\nRecommendation:\n\nMicrosoft.AspNetCore.Authentication.OpenIdConnect 8.0.8",
+            "label": "Microsoft.AspNetCore.Authentication.OpenIdConnect 7.0.1"
+          }
+        },
+        {
+          "incidentId": "3ff799a0-e489-4317-a881-41a586879506",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Server\\Examplium.Server.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Tools, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Tools 8.0.8",
+              "protected": "Microsoft.EntityFrameworkCore.Tools, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Tools 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Server\\Examplium.Server.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Tools 8.0.8",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Tools, 7.0.1\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Tools 8.0.8",
+            "label": "Microsoft.EntityFrameworkCore.Tools 7.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Examplium\\Shared\\Examplium.Shared.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "ruleInstances": [
+        {
+          "incidentId": "7a59cf5e-0493-40f2-82b9-ad3b4a83a601",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Examplium\\Shared\\Examplium.Shared.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Identity.Stores, 7.0.1\n\nRecommendation:\n\nMicrosoft.Extensions.Identity.Stores 8.0.8",
+              "protected": "Microsoft.Extensions.Identity.Stores, 7.0.1\n\nRecommendation:\n\nMicrosoft.Extensions.Identity.Stores 8.0.8"
+            },
+            "kind": "File",
+            "path": "Examplium\\Shared\\Examplium.Shared.csproj",
+            "snippet": "Microsoft.Extensions.Identity.Stores, 7.0.1\n\nRecommendation:\n\nMicrosoft.Extensions.Identity.Stores 8.0.8",
+            "protectedSnippet": "Microsoft.Extensions.Identity.Stores, 7.0.1\n\nRecommendation:\n\nMicrosoft.Extensions.Identity.Stores 8.0.8",
+            "label": "Microsoft.Extensions.Identity.Stores 7.0.1"
+          }
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
