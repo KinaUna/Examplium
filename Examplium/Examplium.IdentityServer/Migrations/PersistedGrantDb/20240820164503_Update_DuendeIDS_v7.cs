@@ -11,6 +11,8 @@ namespace Examplium.IdentityServer.Migrations.PersistedGrantDb
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropPrimaryKey("PK_ServerSideSessions", "ServerSideSessions");
+
             migrationBuilder.AlterColumn<long>(
                 name: "Id",
                 table: "ServerSideSessions",
@@ -20,6 +22,8 @@ namespace Examplium.IdentityServer.Migrations.PersistedGrantDb
                 oldType: "int")
                 .Annotation("SqlServer:Identity", "1, 1")
                 .OldAnnotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AddPrimaryKey("PK_ServerSideSessions", "ServerSideSessions", "Id");
 
             migrationBuilder.CreateTable(
                 name: "PushedAuthorizationRequests",
