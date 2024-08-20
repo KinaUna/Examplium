@@ -165,3 +165,13 @@ Added IdentityServer. See: [Identity Server setup and configuration](/Documentat
 Added Notes feature. See: [Notes feature overview](/Documentation/Code/Notes/Index.md)
 
 <br/>
+
+### Code update
+
+Upgraded all projects in the solution to .NET 8.
+Updated all NuGet packages.
+
+Changes in Duende IdentityServer required updating database schema:
+https://docs.duendesoftware.com/identityserver/v7/upgrades/v6.3_to_v7.0/
+
+Ran the migrations and updated the database.
