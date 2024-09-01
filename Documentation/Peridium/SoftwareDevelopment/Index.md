@@ -17,5 +17,6 @@ Fundamentals of Software Architecture - An Engineering Approach, book by Mark Ri
 [The C4 Model](https://c4model.com/)
 
 
-Faraday Academy YouTube video [Intro to Software Architecture | Overview, Examples, and Diagrams](https://www.youtube.com/watch?v=k3hKLd7vYZ8)
+Faraday Academy YouTube video [Intro to Software Architecture | Overview, Examples, and Diagrams](https://www.youtube.com/watch?v=k3hKLd7vYZ8)  
+[Faraday Academy Architecture Design Document template](https://github.com/faraday-academy/intro-to-software-architecture/blob/main/design_docs/NEW_PROJECT_TEMPLATE.md)  
 
