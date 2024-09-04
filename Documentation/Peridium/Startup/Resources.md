@@ -1,4 +1,4 @@
-# Starup Resource
+# Startup Resources
 
 ##  Websites:
 
