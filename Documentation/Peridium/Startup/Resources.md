@@ -10,6 +10,7 @@
 
 [Founder Institute](https://fi.co)
 
+[Failory](https://www.failory.com/)
 
 ## Newsletters
 
