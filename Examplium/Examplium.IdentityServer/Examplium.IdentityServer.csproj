@@ -6,7 +6,7 @@
     <UserSecretsId>f2c3395a-42c7-4ddb-a5d1-6ce961fdb93b</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Duende.IdentityServer" Version="7.0.6" />
+    <PackageReference Include="Duende.IdentityServer" Version="7.0.8" />
     <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.0.6" />
     <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.0.6" />
     <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="7.0.6" />
